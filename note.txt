@@ -1,0 +1,13 @@
+1. bỏ Add to cart ở list sản phẩm
+2. Được bán bởi DaoThanh.10 => nên để ở 1 vị trí khác, 
+    bấm vào tên người bán ra 1 trang danh sách sản phẩm của shop đó (có thể bỏ qua)
+3. góp ý thiết kế lại trang managepost.html theo kiểu list sẽ phù hợp hơn (có số lượng đã bán, số lượng )
+4. Thêm 1 trang hiển thị kết quả tìm kiếm
+5. Cập nhật lại 4 mục sản phẩm: Điện thoại, Máy tính, Máy ảnh, Phụ kiện
+6. User: trang danh sách đơn hàng đã mua
+        trang quản lí sản phẩm bán như ý 3, thêm khả năng thay đổi sản phẩm (tên, giá, số hàng còn trong kho ...)
+7. Admin: Trang quản lí người bán
+        Trang duyệt sản phẩm
+8. Bỏ menu droplist "Trang" ở đầu trang, đưa vào trong icon user hoặc trong trang quản lí cá nhân của user
+9. Trang payment.html hiển thị thông tin 
+10. bỏ I Accept to the Terms & Conditions và Remember me trong register và login
