@@ -60,6 +60,8 @@
 							<div class="dropdown-menu">
 								Xin chào: <span style="color:rgb(255,0,0)">Đào Thanh</span>
 								<a class="dropdown-item" href="profile.html">Thông tin cá nhân</a>
+								<a class="dropdown-item" href="managepost.html">Quản lý tin</a>
+								<a class="dropdown-item" href="manageorder.html">Quản lý đơn hàng</a>
 								<a class="dropdown-item" href="index.html">Đăng xuất</a>
 							</div>
 						</li>
@@ -69,89 +71,6 @@
 		</div>
 	</div>
 	<!-- //top-header -->
-
-	<!-- modals -->
-	<!-- log in -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title text-center">Log In</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form action="#" method="post">
-						<div class="form-group">
-							<label class="col-form-label">Username</label>
-							<input type="text" class="form-control" placeholder=" " name="Name" required="">
-						</div>
-						<div class="form-group">
-							<label class="col-form-label">Password</label>
-							<input type="password" class="form-control" placeholder=" " name="Password" required="">
-						</div>
-						<div class="right-w3l">
-							<input type="submit" class="form-control" value="Log in">
-						</div>
-						<div class="sub-w3l">
-							<div class="custom-control custom-checkbox mr-sm-2">
-								<input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-								<label class="custom-control-label" for="customControlAutosizing">Remember me?</label>
-							</div>
-						</div>
-						<p class="text-center dont-do mt-3">Don't have an account?
-							<a href="#" data-toggle="modal" data-target="#exampleModal2">
-								Register Now</a>
-						</p>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- register -->
-	<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Register</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form action="#" method="post">
-						<div class="form-group">
-							<label class="col-form-label">Your Name</label>
-							<input type="text" class="form-control" placeholder=" " name="Name" required="">
-						</div>
-						<div class="form-group">
-							<label class="col-form-label">Email</label>
-							<input type="email" class="form-control" placeholder=" " name="Email" required="">
-						</div>
-						<div class="form-group">
-							<label class="col-form-label">Password</label>
-							<input type="password" class="form-control" placeholder=" " name="Password" id="password1" required="">
-						</div>
-						<div class="form-group">
-							<label class="col-form-label">Confirm Password</label>
-							<input type="password" class="form-control" placeholder=" " name="Confirm Password" id="password2" required="">
-						</div>
-						<div class="right-w3l">
-							<input type="submit" class="form-control" value="Register">
-						</div>
-						<div class="sub-w3l">
-							<div class="custom-control custom-checkbox mr-sm-2">
-								<input type="checkbox" class="custom-control-input" id="customControlAutosizing2">
-								<label class="custom-control-label" for="customControlAutosizing2">I Accept to the Terms & Conditions</label>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- //modal -->
 	<!-- //top-header -->
 
 	<!-- header-bottom-->
@@ -284,109 +203,68 @@
 			</h3>
 			<!-- //tittle heading -->
 			<div class="checkout-right">
-				<h4 class="mb-sm-4 mb-3">Giỏ hàng của bạn gồm:
-					<span>3 Sản phẩm</span>
-				</h4>
 				<div class="table-responsive">
 					<table class="timetable_sub">
 						<thead>
 							<tr>
 								<th>Thứ tự</th>
 								<th>Sản phẩm</th>
-								<th>Số lượng</th>
 								<th>Tên sản phẩm</th>
-								<th>Giá</th>
-								<th>Loại bỏ</th>
+								<th>Số lượng</th>
+								<th>Trạng thái</th>
+								<th>Thời gian</th>
+								<th>Quản lý</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr class="rem1">
 								<td class="invert">1</td>
 								<td class="invert-image">
-									<input type="checkbox" name="sanpham1" value="sanpham_id">
 									<a href="single.html">
 										<img src="images/a.jpg" alt=" " class="img-responsive">
 									</a>
 								</td>
-								<td class="invert">
-									<div class="quantity">
-										<div class="quantity-select">
-											<div class="entry value-minus">&nbsp;</div>
-											<div class="entry value">
-												<span>1</span>
-											</div>
-											<div class="entry value-plus active">&nbsp;</div>
-										</div>
-									</div>
-								</td>
 								<td class="invert">Back Cover</td>
-								<td class="invert">$259</td>
+								<td class="invert">1</td>
+								<td class="invert">Đã giao hàng</td>
+								<td class="invert">Đã giao ngày 11 thg 11 2030</td>
 								<td class="invert">
-									<div class="rem">
-										<div class="close1"> </div>
-									</div>
+									<a class="nav-link" href="orderDetail.html">QUẢN LÝ</a>
 								</td>
 							</tr>
 							<tr class="rem2">
 								<td class="invert">2</td>
 								<td class="invert-image">
-									<input type="checkbox" name="sanpham2" value="sanpham_id">
 									<a href="single2.html">
 										<img src="images/a4.jpg" alt=" " class="img-responsive">
 									</a>
 								</td>
-								<td class="invert">
-									<div class="quantity">
-										<div class="quantity-select">
-											<div class="entry value-minus">&nbsp;</div>
-											<div class="entry value">
-												<span>1</span>
-											</div>
-											<div class="entry value-plus active">&nbsp;</div>
-										</div>
-									</div>
-								</td>
 								<td class="invert">Cordless Trimmer</td>
-								<td class="invert">$1,999</td>
+								<td class="invert">2</td>
+								<td class="invert">Đã đóng gói</td>
+								<td class="invert">Nhận hàng vào Th 6 13 thg 11 2031</td>
 								<td class="invert">
-									<div class="rem">
-										<div class="close2"> </div>
-									</div>
+									<a class="nav-link" href="orderDetail.html">QUẢN LÝ</a>
 								</td>
 							</tr>
 							<tr class="rem3">
 								<td class="invert">3</td>
 								<td class="invert-image">
-									<input type="checkbox" name="sanpham3" value="sanpham_id">
 									<a href="single.html">
 										<img src="images/a3.jpg" alt=" " class="img-responsive">
 									</a>
 								</td>
-								<td class="invert">
-									<div class="quantity">
-										<div class="quantity-select">
-											<div class="entry value-minus">&nbsp;</div>
-											<div class="entry value">
-												<span>1</span>
-											</div>
-											<div class="entry value-plus active">&nbsp;</div>
-										</div>
-									</div>
-								</td>
 								<td class="invert">Nikon Camera</td>
-								<td class="invert">$37,490</td>
+								<td class="invert">100</td>
+								<td class="invert">Đã giao hàng</td>
+								<td class="invert">Đã giao ngày 12 thg 11 2030</td>
 								<td class="invert">
-									<div class="rem">
-										<div class="close3"> </div>
-									</div>
+									<a class="nav-link" href="orderDetail.html">QUẢN LÝ</a>
 								</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-				<h4 class="mb-sm-4 mb-3">Tổng số tiền:
-					<span>200 đ</span></h4>
-				<a href="payment.html"><button class="btn btn-danger" type="button">Mua ngay</button></a>
 			</div>
 		</div>
 	</div>

@@ -2,7 +2,7 @@
 <html lang="zxx">
 
 <head>
-	<title>Electro Store Ecommerce | Single Product</title>
+	<title>Electro Store Ecommerce | Chi tiết sản phẩm</title>
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
@@ -116,9 +116,9 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="/register" method="post">
+					<form action="#" method="post">
 						<div class="form-group">
-							<label class="col-form-label">Your Name haha</label>
+							<label class="col-form-label">Your Name</label>
 							<input type="text" class="form-control" placeholder=" " name="Name" required="">
 						</div>
 						<div class="form-group">
@@ -139,7 +139,7 @@
 						<div class="sub-w3l">
 							<div class="custom-control custom-checkbox mr-sm-2">
 								<input type="checkbox" class="custom-control-input" id="customControlAutosizing2">
-								<label class="custom-control-label" for="customControlAutosizing2">I Accept to the Terms & Conditions okkkkk</label>
+								<label class="custom-control-label" for="customControlAutosizing2">I Accept to the Terms & Conditions</label>
 							</div>
 						</div>
 					</form>
@@ -282,9 +282,9 @@
 					<div class="grid images_3_of_2">
 						<div class="flexslider">
 							<ul class="slides">
-								<li data-thumb= <%= product.photos %>>
+								<li data-thumb="images/si1.jpg">
 									<div class="thumb-image">
-										<img src="<%= product.photos %>" data-imagezoom="true" class="img-fluid" alt=""> </div>
+										<img src="images/si1.jpg" data-imagezoom="true" class="img-fluid" alt=""> </div>
 								</li>
 								<li data-thumb="images/si2.jpg">
 									<div class="thumb-image">
@@ -301,37 +301,22 @@
 				</div>
 
 				<div class="col-lg-7 single-right-left simpleCart_shelfItem">
-					<h3 class="mb-3"> <%= product.product_name %> (Gold, 16 GB) (3 GB RAM)</h3>
+					<h3 class="mb-3">Samsung Galaxy J7 Prime (Gold, 16 GB) (3 GB RAM)</h3>
+					<h3 class="mb-1">Được bán bởi <a href= " ">SamSung Official Store</a></h3>
 					<p class="mb-3">
-						<span class="item_price"> <%= product.sale_price %> </span>
-						<del class="mx-2 font-weight-light"><%= product.price %></del>
+						<span class="item_price">$200.00</span>
+						<del class="mx-2 font-weight-light">$280.00</del>
 						<label>Free delivery</label>
 					</p>
-					<div class="single-infoagile">
-						<ul>
-							<li class="mb-3">
-								Cash on Delivery Eligible.
-							</li>
-							<li class="mb-3">
-								Shipping Speed to Delivery.
-							</li>
-							<li class="mb-3">
-								EMIs from $655/month.
-							</li>
-							<li class="mb-3">
-								Bank OfferExtra 5% off* with Axis Bank Buzz Credit CardT&C
-							</li>
-						</ul>
-					</div>
 					<div class="product-single-w3l">
 						<p class="my-3">
 							<i class="far fa-hand-point-right mr-2"></i>
 							<label>1 Year</label>Manufacturer Warranty</p>
 						<ul>
 							<li class="mb-1">
-								<%= product.product_description %>
+								3 GB RAM | 16 GB ROM | Expandable Upto 256 GB
 							</li>
-							<!-- <li class="mb-1">
+							<li class="mb-1">
 								5.5 inch Full HD Display
 							</li>
 							<li class="mb-1">
@@ -342,26 +327,48 @@
 							</li>
 							<li class="mb-1">
 								Exynos 7870 Octa Core 1.6GHz Processor
-							</li> -->
+							</li>
+								
 						</ul>
-						<p class="my-sm-4 my-3">
-							<i class="fas fa-retweet mr-3"></i>Net banking & Credit/ Debit/ ATM card
-						</p>
+						<div class="quantity">
+							<div class="quantity-select">
+								Số lượng
+								<div class="entry value-minus">&nbsp;</div>
+									<div class="entry value">
+										<span>1</span>
+									</div>
+								<div class="entry value-plus active">&nbsp;</div>
+								Chỉ còn 1 sản phẩm duy nhất
+							</div>
+						</div>
+
 					</div>
 					<div class="occasion-cart">
 						<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-							<form action="#" method="post">
+							<form action="checkout.html" method="post">
 								<fieldset>
-									<input type="hidden" name="cmd" value="_cart" />
-									<input type="hidden" name="add" value="1" />
-									<input type="hidden" name="business" value=" " />
-									<input type="hidden" name="item_name" value="Samsung Galaxy J7 Prime" />
-									<input type="hidden" name="amount" value="200.00" />
-									<input type="hidden" name="discount_amount" value="1.00" />
-									<input type="hidden" name="currency_code" value="USD" />
-									<input type="hidden" name="return" value=" " />
-									<input type="hidden" name="cancel_return" value=" " />
-									<input type="submit" name="submit" value="Add to cart" class="button" />
+									<table>
+										<tr>
+											<td><input type="hidden" name="cmd" value="_cart" /></td>
+											<td><input type="hidden" name="add" value="1" /></td>
+										</tr>	
+											
+										<tr>
+											<td><input type="hidden" name="business" value="SamSung Official Store"/></td>
+											<td><input type="hidden" name="item_name" value="Samsung Galaxy J7 Prime" /></td>
+										</tr>	
+											
+										<tr>	
+											<td><input type="hidden" name="amount" value="200.00" /></td>
+											<td><input type="hidden" name="discount_amount" value="1.00" /></td>
+										</tr>
+										<tr colspan = 2>	
+											<td><input type="hidden" name="currency_code" value="USD" /></td>
+										</tr>	
+										<tr>
+											<td><input type="submit" name="addtocart" value="Thêm vào giỏ hàng" class="button" /></td>
+										</tr>	
+									</table>
 								</fieldset>
 							</form>
 						</div>
@@ -458,6 +465,7 @@
 	<!-- //nav smooth scroll -->
 
 	<!-- popup modal (for location)-->
+
 	<script src="js/jquery.magnific-popup.js"></script>
 	<script>
 		$(document).ready(function () {
@@ -475,10 +483,11 @@
 
 		});
 	</script>
+
 	<!-- //popup modal (for location)-->
 
 	<!-- cart-js -->
-	<script src="js/minicart.js"></script>
+	<!-- <script src="js/minicart.js"></script> -->
 	<script>
 		paypals.minicarts.render(); //use only unique class names other than paypals.minicarts.Also Replace same class name in css and minicart.min.js
 
@@ -493,8 +502,8 @@
 				total += items[i].get('quantity');
 			}
 
-			if (total < 3) {
-				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+			if (total < 1) {
+				alert('The minimum order quantity is 1. Please add more to your shopping cart before checking out');
 				evt.preventDefault();
 			}
 		});

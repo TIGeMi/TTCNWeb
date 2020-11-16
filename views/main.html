@@ -17,9 +17,7 @@
 			window.scrollTo(0, 1);
 		}
 	</script>
-    <!-- //Meta tag Keywords -->
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<!-- //Meta tag Keywords -->
 
 	<!-- Custom-Files -->
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -50,8 +48,7 @@
 				<div class="col-lg-6 header-most-top">
 				</div>
 				<div class="col-lg-6 header-right mt-lg-0 mt-3">
-                    <!-- header lists -->
-                    <% if(isLogin == false) { %>
+					<!-- header lists -->
 					<ul>
 						<li class="text-center border-right text-white">
 							<a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
@@ -61,17 +58,7 @@
 							<a href="#" data-toggle="modal" data-target="#exampleModal2" class="text-white">
 								<i class="fas fa-sign-out-alt mr-2"></i>Register </a>
 						</li>
-                    </ul> <% }  
-                    else { %>
-                        <ul>
-                            <li>
-                                <h6>Welcome <%= name %> </h6>
-                            </li>
-                            <li>
-                                <h6> <a href="/logout"> Logout </a> </h6>
-                            </li>
-                        </ul>
-                        <% } %>
+					</ul>
 					<!-- //header lists -->
 				</div>
 			</div>
@@ -91,14 +78,14 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="/login" method="post">
+					<form action="#" method="post">
 						<div class="form-group">
 							<label class="col-form-label">Username</label>
-							<input type="text" class="form-control" placeholder=" " name="email" required="">
+							<input type="text" class="form-control" placeholder=" " name="Name" required="">
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Password</label>
-							<input type="password" class="form-control" placeholder=" " name="password" required="">
+							<input type="password" class="form-control" placeholder=" " name="Password" required="">
 						</div>
 						<div class="right-w3l">
 							<input type="submit" class="form-control" value="Log in">
@@ -129,31 +116,22 @@
 					</button>
 				</div>
 				<div class="modal-body">
-                    <form action="/register" method="post">
-                        <div class="form-group">
-							<label class="col-form-label">Your Name</label>
-							<input type="text" class="form-control" placeholder=" " name="Name" required="">
-						</div>
+					<form action="#" method="post">
 						<div class="form-group">
+							<label class="col-form-label">Your Name</label>
+							<input type="text" class="form-control" id = "Name" name= "Name" required="">
+						</div>
+						<div class="form-group" id="emailERR">
 							<label class="col-form-label">Email</label>
-							<input type="email" class="form-control" placeholder=" " name="Email" required="">
+							<input type="email" class="form-control" id = "Email" name= "Email" required="" onchange="checkEmail()">
+							<p id="err">Email đã tồn tại</p>
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Password</label>
-							<input type="password" class="form-control" placeholder=" " name="Password" id="password1" required="">
-						</div>
-						<div class="form-group">
-							<label class="col-form-label">Confirm Password</label>
-							<input type="password" class="form-control" placeholder=" " name="Confirm Password" id="password2" required="">
+							<input type="password" class="form-control" id="Password" name="Password"required="">
 						</div>
 						<div class="right-w3l">
-							<input type="submit" class="form-control" value="Register">
-						</div>
-						<div class="sub-w3l">
-							<div class="custom-control custom-checkbox mr-sm-2">
-								<input type="checkbox" class="custom-control-input" id="customControlAutosizing2">
-								<label class="custom-control-label" for="customControlAutosizing2">I Accept to the Terms & Conditions</label>
-							</div>
+							<input type="submit" class="form-control" value="Register" onclick="hello()">
 						</div>
 					</form>
 				</div>
@@ -214,30 +192,30 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto text-center mr-xl-5">
 						<li class="nav-item active mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="/">Trang chủ</a>
+							<a class="nav-link" href="index.html">Trang chủ</a>
 						</li>
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="product" role="button" aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link" href="product.html" role="button" aria-haspopup="true" aria-expanded="false">
 								Điện thoại
 							</a>
 						</li>
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="product" role="button" aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link" href="product.html" role="button" aria-haspopup="true" aria-expanded="false">
 								Máy tính
 							</a>
 						</li>
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="product2.html" role="button" aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link" href="product.html" role="button" aria-haspopup="true" aria-expanded="false">
 								Máy giặt
 							</a>
 						</li>
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="product2.html" role="button" aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link" href="product.html" role="button" aria-haspopup="true" aria-expanded="false">
 								Tủ lạnh
 							</a>
 						</li>
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="product2.html" role="button" aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link" href="product.html" role="button" aria-haspopup="true" aria-expanded="false">
 								Máy lạnh
 							</a>
 						</li>
@@ -246,7 +224,7 @@
 								Trang
 							</a>
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href="addnewproduct.html">Sản phẩm mới</a>
+								<a class="dropdown-item" href="product.html">Sản phẩm mới</a>
 								<a class="dropdown-item" href="checkout.html">Kiểm tra hàng</a>
 								<a class="dropdown-item" href="payment.html">Thanh toán</a>
 							</div>
@@ -281,7 +259,7 @@
 								<span>Big</span>
 								Sale
 							</h3>
-							<a class="button2" href="product">Shop Now </a>
+							<a class="button2" href="product.html">Shop Now </a>
 						</div>
 					</div>
 				</div>
@@ -295,7 +273,7 @@
 							<h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">Best
 								<span>Headphone</span>
 							</h3>
-							<a class="button2" href="product">Shop Now </a>
+							<a class="button2" href="product.html">Shop Now </a>
 						</div>
 					</div>
 				</div>
@@ -309,7 +287,7 @@
 							<h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">New
 								<span>Standard</span>
 							</h3>
-							<a class="button2" href="product">Shop Now </a>
+							<a class="button2" href="product.html">Shop Now </a>
 						</div>
 					</div>
 				</div>
@@ -323,7 +301,7 @@
 							<h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">Today
 								<span>Discount</span>
 							</h3>
-							<a class="button2" href="product">Shop Now </a>
+							<a class="button2" href="product.html">Shop Now </a>
 						</div>
 					</div>
 				</div>
@@ -376,22 +354,6 @@
 												<span class="item_price">2.000.000vnđ</span>
 												<del>1.800.000vnđ</del>
 											</div>
-											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-												<form action="#" method="post">
-													<fieldset>
-														<input type="hidden" name="cmd" value="_cart" />
-														<input type="hidden" name="add" value="1" />
-														<input type="hidden" name="business" value=" " />
-														<input type="hidden" name="item_name" value="Samsung Galaxy J7" />
-														<input type="hidden" name="amount" value="200.00" />
-														<input type="hidden" name="discount_amount" value="1.00" />
-														<input type="hidden" name="currency_code" value="USD" />
-														<input type="hidden" name="return" value=" " />
-														<input type="hidden" name="cancel_return" value=" " />
-														<input type="submit" name="submit" value="Add to cart" class="button btn" />
-													</fieldset>
-												</form>
-											</div>
 										</div>
 									</div>
 								</div>
@@ -415,23 +377,6 @@
 												<span class="item_price">2.000.000vnđ</span>
 												<del>1.800.000vnđ</del>
 											</div>
-											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-												<form action="#" method="post">
-													<fieldset>
-														<input type="hidden" name="cmd" value="_cart" />
-														<input type="hidden" name="add" value="1" />
-														<input type="hidden" name="business" value=" " />
-														<input type="hidden" name="item_name" value="OPPO A37f" />
-														<input type="hidden" name="amount" value="230.00" />
-														<input type="hidden" name="discount_amount" value="1.00" />
-														<input type="hidden" name="currency_code" value="USD" />
-														<input type="hidden" name="return" value=" " />
-														<input type="hidden" name="cancel_return" value=" " />
-														<input type="submit" name="submit" value="Add to cart" class="button btn" />
-													</fieldset>
-												</form>
-											</div>
-
 										</div>
 									</div>
 								</div>
@@ -454,22 +399,6 @@
 											<div class="info-product-price my-2">
 												<span class="item_price">2.000.000vnđ</span>
 												<del>1.800.000vnđ</del>
-											</div>
-											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-												<form action="#" method="post">
-													<fieldset>
-														<input type="hidden" name="cmd" value="_cart" />
-														<input type="hidden" name="add" value="1" />
-														<input type="hidden" name="business" value=" " />
-														<input type="hidden" name="item_name" value="Apple iPhone X" />
-														<input type="hidden" name="amount" value="280.00" />
-														<input type="hidden" name="discount_amount" value="1.00" />
-														<input type="hidden" name="currency_code" value="USD" />
-														<input type="hidden" name="return" value=" " />
-														<input type="hidden" name="cancel_return" value=" " />
-														<input type="submit" name="submit" value="Add to cart" class="button btn" />
-													</fieldset>
-												</form>
 											</div>
 										</div>
 									</div>
@@ -499,22 +428,6 @@
 												<span class="item_price">2.000.000vnđ</span>
 												<del>1.800.000vnđ</del>
 											</div>
-											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-												<form action="#" method="post">
-													<fieldset>
-														<input type="hidden" name="cmd" value="_cart" />
-														<input type="hidden" name="add" value="1" />
-														<input type="hidden" name="business" value=" " />
-														<input type="hidden" name="item_name" value="Sony 80 cm (32 inches)" />
-														<input type="hidden" name="amount" value="320.00" />
-														<input type="hidden" name="discount_amount" value="1.00" />
-														<input type="hidden" name="currency_code" value="USD" />
-														<input type="hidden" name="return" value=" " />
-														<input type="hidden" name="cancel_return" value=" " />
-														<input type="submit" name="submit" value="Add to cart" class="button btn" />
-													</fieldset>
-												</form>
-											</div>
 										</div>
 									</div>
 								</div>
@@ -538,23 +451,6 @@
 												<span class="item_price">2.000.000vnđ</span>
 												<del>1.800.000vnđ</del>
 											</div>
-											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-												<form action="#" method="post">
-													<fieldset>
-														<input type="hidden" name="cmd" value="_cart" />
-														<input type="hidden" name="add" value="1" />
-														<input type="hidden" name="business" value=" " />
-														<input type="hidden" name="item_name" value="Artis Speaker" />
-														<input type="hidden" name="amount" value="349.00" />
-														<input type="hidden" name="discount_amount" value="1.00" />
-														<input type="hidden" name="currency_code" value="USD" />
-														<input type="hidden" name="return" value=" " />
-														<input type="hidden" name="cancel_return" value=" " />
-														<input type="submit" name="submit" value="Add to cart" class="button btn" />
-													</fieldset>
-												</form>
-											</div>
-
 										</div>
 									</div>
 								</div>
@@ -575,22 +471,6 @@
 											<div class="info-product-price my-2">
 												<span class="item_price">2.000.000vnđ</span>
 												<del>1.800.000vnđ</del>
-											</div>
-											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-												<form action="#" method="post">
-													<fieldset>
-														<input type="hidden" name="cmd" value="_cart" />
-														<input type="hidden" name="add" value="1" />
-														<input type="hidden" name="business" value=" " />
-														<input type="hidden" name="item_name" value="Philips Speakers" />
-														<input type="hidden" name="amount" value="249.00" />
-														<input type="hidden" name="discount_amount" value="1.00" />
-														<input type="hidden" name="currency_code" value="USD" />
-														<input type="hidden" name="return" value=" " />
-														<input type="hidden" name="cancel_return" value=" " />
-														<input type="submit" name="submit" value="Add to cart" class="button btn" />
-													</fieldset>
-												</form>
 											</div>
 										</div>
 									</div>
@@ -621,23 +501,6 @@
 												<span class="item_price">2.000.000vnđ</span>
 												<del>1.800.000vnđ</del>
 											</div>
-											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-												<form action="#" method="post">
-													<fieldset>
-														<input type="hidden" name="cmd" value="_cart" />
-														<input type="hidden" name="add" value="1" />
-														<input type="hidden" name="business" value=" " />
-														<input type="hidden" name="item_name" value="Whirlpool 245" />
-														<input type="hidden" name="amount" value="230.00" />
-														<input type="hidden" name="discount_amount" value="1.00" />
-														<input type="hidden" name="currency_code" value="USD" />
-														<input type="hidden" name="return" value=" " />
-														<input type="hidden" name="cancel_return" value=" " />
-														<input type="submit" name="submit" value="Add to cart" class="button btn" />
-													</fieldset>
-												</form>
-											</div>
-
 										</div>
 									</div>
 								</div>
@@ -659,23 +522,6 @@
 												<span class="item_price">2.000.000vnđ</span>
 												<del>1.800.000vnđ</del>
 											</div>
-											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-												<form action="#" method="post">
-													<fieldset>
-														<input type="hidden" name="cmd" value="_cart" />
-														<input type="hidden" name="add" value="1" />
-														<input type="hidden" name="business" value=" " />
-														<input type="hidden" name="item_name" value="BPL Washing Machine" />
-														<input type="hidden" name="amount" value="180.00" />
-														<input type="hidden" name="discount_amount" value="1.00" />
-														<input type="hidden" name="currency_code" value="USD" />
-														<input type="hidden" name="return" value=" " />
-														<input type="hidden" name="cancel_return" value=" " />
-														<input type="submit" name="submit" value="Add to cart" class="button btn" />
-													</fieldset>
-												</form>
-											</div>
-
 										</div>
 									</div>
 								</div>
@@ -696,22 +542,6 @@
 											<div class="info-product-price my-2">
 												<span class="item_price">2.000.000vnđ</span>
 												<del>1.800.000vnđ</del>
-											</div>
-											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-												<form action="#" method="post">
-													<fieldset>
-														<input type="hidden" name="cmd" value="_cart" />
-														<input type="hidden" name="add" value="1" />
-														<input type="hidden" name="business" value=" " />
-														<input type="hidden" name="item_name" value="Microwave Oven" />
-														<input type="hidden" name="amount" value="199.00" />
-														<input type="hidden" name="discount_amount" value="1.00" />
-														<input type="hidden" name="currency_code" value="USD" />
-														<input type="hidden" name="return" value=" " />
-														<input type="hidden" name="cancel_return" value=" " />
-														<input type="submit" name="submit" value="Add to cart" class="button btn" />
-													</fieldset>
-												</form>
 											</div>
 										</div>
 									</div>
@@ -993,6 +823,74 @@
 	<script src="js/bootstrap.js"></script>
 	<!-- //for bootstrap working -->
 	<!-- //js-files -->
+
+
+
+	 <script type="text/javascript">
+            let alowRegister = false;
+
+            function emailERR(msg) {
+                var child = document.getElementById("err");
+                child.remove()
+
+                err = document.createElement("p");
+                err.setAttribute("id", "err")
+                var node = document.createTextNode(msg);
+                err.appendChild(node);
+                var element = document.getElementById("emailERR");
+                element.appendChild(err);
+            }
+            function checkEmail() {
+                var email = $("#Email").val();
+                console.log(email)
+                $.ajax({
+                    url: '/checkEmail',
+                    type: 'POST',
+                    cache: false,
+                    data: { email: email },
+                    success: function (data) {
+                        if (data.duplicate) {
+                            emailERR("email Đã tồn tại")
+                            alowRegister = false
+                        }
+                        else {
+                            emailERR("Email hợp lệ");
+                            alowRegister = true
+                        }
+                    }
+                    , error: function (jqXHR, textStatus, err) {
+                        alert('text status ' + textStatus + ', err ' + err)
+                    }
+                })
+            }
+            function hello() {
+                var forms = document.forms["f1"]
+                if(forms.checkValidity()) {
+                    var Email = $("#Email").val();
+                    var Password = $("#Password").val();
+                    var Name = $("#Name").val();
+
+                    if(alowRegister) {
+                        $.ajax({
+                        url: '/register',
+                        type: 'POST',
+                        cache: false,
+                        data: { Email, Password, Name },
+                        success: function (data) {
+                            alert("Đăng kí thành công, trở về trang chủ");
+                            location.reload();
+                        }
+                        , error: function (jqXHR, textStatus, err) {
+                            alert('text status ' + textStatus + ', err ' + err)
+                        }
+                        })
+                    }
+                } else alert("Vui Lòng điền đầy đủ")
+                
+            }
+                          
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </body>
 
 </html>

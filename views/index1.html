@@ -51,17 +51,16 @@
 					<!-- header lists -->
 					<ul>
 						<li>
-							<button class="btn col-2" type="submit" style="color:color:rgb(255,0,0)">Đăng tin</button>
+							<button class="btn btn-danger" type="submit">Đăng tin</button>						
 						</li>
 						<li class="dropdown">
 							<a class="dropdown-toggle col-2" href="#" role="button" >
 								<span><img src="images/man.png" class="rounded-circle" alt="" width="30" height="30"></span>
 							</a>
 							<div class="dropdown-menu">
-								Tài khoản: <span style="color:rgb(255,0,0)">Đào Thanh</span>
-								<a class="dropdown-item" href="#">Thông tin cá nhân</a>
-								<a class="dropdown-item" href="#">Cài đặt</a>
-								<a class="dropdown-item" href="#">Đăng xuất</a>
+								Xin chào: <span style="color:rgb(255,0,0)">Đào Thanh</span>
+								<a class="dropdown-item" href="profile.html">Thông tin cá nhân</a>
+								<a class="dropdown-item" href="index.html">Đăng xuất</a>
 							</div>
 						</li>
 					</ul>
@@ -827,8 +826,8 @@
 				total += items[i].get('quantity');
 			}
 
-			if (total < 3) {
-				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+			if (total < 1) {
+				alert('The minimum order quantity is 1. Please add more to your shopping cart before checking out');
 				evt.preventDefault();
 			}
 		});

@@ -262,7 +262,7 @@
 						<a href="index.html">Home</a>
 						<i>|</i>
 					</li>
-					<li>Payment Page</li>
+					<li>Thanh toán</li>
 				</ul>
 			</div>
 		</div>
@@ -273,8 +273,78 @@
 		<div class="container py-xl-4 py-lg-2">
 			<!-- tittle heading -->
 			<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
-				<span>P</span>ayment</h3>
+				<span>T</span>hanh
+				<span>T</span>oán
+			</h3>
+
 			<!-- //tittle heading -->
+			<div class="resp-tabs-container hor_1">
+
+				<div>
+					
+					<form action="#" method="post" class="creditly-card-form agileinfo_form">
+						<div class="creditly-wrapper wthree, w3_agileits_wrapper">
+							<div class="credit-card-wrapper">
+								<div class="first-row form-group">
+								</div>
+									<div class="controls">
+										<label class="control-label">Mã đơn hàng</label>
+										<input class="billing-address-name form-control" type="text" name="name" value="DN6996">
+									</div>
+									<br>
+									<div class="controls">
+										<label class="control-label">Tên cửa hàng</label>
+										<input class="billing-address-name form-control" type="text" name="name" value="SamSung Official Store">
+									</div>
+									<br>
+									<div class="controls">
+										<label class="control-label">Danh mục sản phẩm</label>
+										<input class="billing-address-name form-control" type="text" name="name" value="Điện thoại">
+									</div>
+									<br>
+									
+									<div class="controls">
+										<label class="control-label">Tên sản phẩm</label>
+										<input class="billing-address-name form-control" type="text" name="name" value="Samsung Galaxy J7">
+									</div>
+									<br>
+									
+									<div class="controls">
+										<label class="control-label">Số lượng</label>
+										<input class="billing-address-name form-control" type="text" name="name" value="1">
+									</div>
+									<br>
+									<div class="controls">
+										<label class="control-label">Tổng số tiền phải thanh toán (VNĐ)</label>
+										<input class="billing-address-name form-control" type="text" name="name" value="20000000">
+									</div>
+									<br>
+									
+									<div class="controls">
+										<label class="control-label">Tên người nhận</label>
+										<input class="billing-address-name form-control" type="text" name="name" value="Doãn Đại Hiệp">
+									</div>
+									<br>
+									<div class="controls">
+										<label class="control-label">Địa chỉ nhận hàng</label>
+										<input class="billing-address-name form-control" type="text" name="name" value="08 Hà Văn Tính">
+										
+									</div>
+									<br>
+									<div class="controls">
+										<label class="control-label">Số điện thoại người nhận</label>
+										<input class="billing-address-name form-control" type="text" name="name" value="0969699969">
+										
+									</div>
+									<br>
+									
+								</div>
+								
+							</div>
+						</div>
+					</form>
+				</div>			
+			</div>
 			<div class="checkout-right">
 				<!--Horizontal Tab-->
 				<div id="parentHorizontalTab">
@@ -334,7 +404,7 @@
 										</div>
 										<div class="clearfix"></div>
 									</div>
-									<input type="submit" value="Mua ngay">
+									<input type="submit" value="Xác nhận">
 								</form>
 							</div>
 						</div>
@@ -465,8 +535,8 @@
 				total += items[i].get('quantity');
 			}
 
-			if (total < 3) {
-				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+			if (total < 1) {
+				alert('The minimum order quantity is 1. Please add more to your shopping cart before checking out');
 				evt.preventDefault();
 			}
 		});

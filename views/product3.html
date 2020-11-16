@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="zxx">
 
 <head>
-	<title>Electro Store Ecommerce Category Bootstrap Responsive Web Template | Checkout :: w3layouts</title>
+	<title>Cửa hàng Điện tử</title>
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
@@ -45,30 +46,26 @@
 	<div class="agile-main-top">
 		<div class="container-fluid">
 			<div class="row main-top-w3l py-2">
-				<div class="col-lg-8 header-most-top">
+				<div class="col-lg-6 header-most-top">
 				</div>
-				<div class="col-lg-4 header-right ">
+				<div class="col-lg-6 header-right mt-lg-0 mt-3">
 					<!-- header lists -->
 					<ul>
-						<li>
-							<button class="btn btn-danger" type="submit">Đăng tin</button>						
+						<li class="text-center border-right text-white">
+							<a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
+								<i class="fas fa-sign-in-alt mr-2"></i> Đăng nhập </a>
 						</li>
-						<li class="dropdown">
-							<a class="dropdown-toggle col-2" href="#" role="button" >
-								<span><img src="images/man.png" class="rounded-circle" alt="" width="30" height="30"></span>
-							</a>
-							<div class="dropdown-menu">
-								Xin chào: <span style="color:rgb(255,0,0)">Đào Thanh</span>
-								<a class="dropdown-item" href="profile.html">Thông tin cá nhân</a>
-								<a class="dropdown-item" href="index.html">Đăng xuất</a>
-							</div>
+						<li class="text-center text-white">
+							<a href="#" data-toggle="modal" data-target="#exampleModal2" class="text-white">
+								<i class="fas fa-sign-out-alt mr-2"></i>Đăng ký</a>
 						</li>
 					</ul>
+					<!-- //header lists -->
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- //top-header -->
+
 
 	<!-- modals -->
 	<!-- log in -->
@@ -76,7 +73,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title text-center">Log In</h5>
+					<h5 class="modal-title text-center">Đăng nhập</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -84,25 +81,20 @@
 				<div class="modal-body">
 					<form action="#" method="post">
 						<div class="form-group">
-							<label class="col-form-label">Username</label>
+							<label class="col-form-label">Tên đăng nhập</label>
 							<input type="text" class="form-control" placeholder=" " name="Name" required="">
 						</div>
 						<div class="form-group">
-							<label class="col-form-label">Password</label>
+							<label class="col-form-label">Mật khẩu</label>
 							<input type="password" class="form-control" placeholder=" " name="Password" required="">
 						</div>
 						<div class="right-w3l">
-							<input type="submit" class="form-control" value="Log in">
+							<input type="submit" class="form-control" value="Đăng nhập">
 						</div>
-						<div class="sub-w3l">
-							<div class="custom-control custom-checkbox mr-sm-2">
-								<input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-								<label class="custom-control-label" for="customControlAutosizing">Remember me?</label>
-							</div>
-						</div>
-						<p class="text-center dont-do mt-3">Don't have an account?
+						
+						<p class="text-center dont-do mt-3">Bạn chưa có tài khoản?
 							<a href="#" data-toggle="modal" data-target="#exampleModal2">
-								Register Now</a>
+								Đăng ký ngay!</a>
 						</p>
 					</form>
 				</div>
@@ -114,7 +106,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title">Register</h5>
+					<h5 class="modal-title">Đăng ký</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -122,7 +114,7 @@
 				<div class="modal-body">
 					<form action="#" method="post">
 						<div class="form-group">
-							<label class="col-form-label">Your Name</label>
+							<label class="col-form-label">Tên người dùng</label>
 							<input type="text" class="form-control" placeholder=" " name="Name" required="">
 						</div>
 						<div class="form-group">
@@ -130,22 +122,21 @@
 							<input type="email" class="form-control" placeholder=" " name="Email" required="">
 						</div>
 						<div class="form-group">
-							<label class="col-form-label">Password</label>
+							<label class="col-form-label">Tên đăng nhập</label>
+							<input type="username" class="form-control" placeholder=" " name="Username" required="">
+						</div>
+						<div class="form-group">
+							<label class="col-form-label">Mật khẩu</label>
 							<input type="password" class="form-control" placeholder=" " name="Password" id="password1" required="">
 						</div>
 						<div class="form-group">
-							<label class="col-form-label">Confirm Password</label>
+							<label class="col-form-label">Xác nhận mật khẩu</label>
 							<input type="password" class="form-control" placeholder=" " name="Confirm Password" id="password2" required="">
 						</div>
 						<div class="right-w3l">
-							<input type="submit" class="form-control" value="Register">
+							<input type="submit" class="form-control" value="Đăng ký">
 						</div>
-						<div class="sub-w3l">
-							<div class="custom-control custom-checkbox mr-sm-2">
-								<input type="checkbox" class="custom-control-input" id="customControlAutosizing2">
-								<label class="custom-control-label" for="customControlAutosizing2">I Accept to the Terms & Conditions</label>
-							</div>
-						</div>
+						
 					</form>
 				</div>
 			</div>
@@ -173,7 +164,7 @@
 						<!-- search -->
 						<div class="col-10 agileits_search">
 							<form class="form-inline" action="#" method="post">
-								<input class="form-control mr-sm-2" type="search" aria-label="Search" required>
+								<input class="form-control mr-sm-2" type="search"  aria-label="Search" required>
 								<button class="btn my-2 my-sm-0" type="submit">Tìm kiếm</button>
 							</form>
 						</div>
@@ -218,18 +209,13 @@
 							</a>
 						</li>
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="product2.html" role="button" aria-haspopup="true" aria-expanded="false">
-								Máy giặt
+							<a class="nav-link" href="product.html" role="button" aria-haspopup="true" aria-expanded="false">
+								Máy ảnh
 							</a>
 						</li>
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="product2.html" role="button" aria-haspopup="true" aria-expanded="false">
-								Tủ lạnh
-							</a>
-						</li>
-						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="product2.html" role="button" aria-haspopup="true" aria-expanded="false">
-								Máy lạnh
+							<a class="nav-link" href="product.html" role="button" aria-haspopup="true" aria-expanded="false">
+								Phụ kiện
 							</a>
 						</li>
 						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
@@ -242,6 +228,7 @@
 								<a class="dropdown-item" href="payment.html">Thanh toán</a>
 							</div>
 						</li>
+						
 						<li class="nav-item">
 							<a class="nav-link" href="contact.html">Liên hệ</a>
 						</li>
@@ -266,132 +253,219 @@
 						<a href="index.html">Trang chủ</a>
 						<i>|</i>
 					</li>
-					<li>Kiểm tra đơn hàng</li>
+					<li>Máy ảnh</li>
 				</ul>
 			</div>
 		</div>
 	</div>
 	<!-- //page -->
-	<!-- checkout page -->
-	<div class="privacy py-sm-5 py-4">
+
+	<!-- top Products -->
+	<div class="ads-grid py-sm-5 py-4">
 		<div class="container py-xl-4 py-lg-2">
 			<!-- tittle heading -->
 			<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
-				<span>K</span>iểm 
-				<span>T</span>ra
-				<span>Đ</span>ơn
-				<span>H</span>àng
-			</h3>
+				<span>M</span>áy
+				<span>Ả</span>nh
 			<!-- //tittle heading -->
-			<div class="checkout-right">
-				<h4 class="mb-sm-4 mb-3">Giỏ hàng của bạn gồm:
-					<span>3 Sản phẩm</span>
-				</h4>
-				<div class="table-responsive">
-					<table class="timetable_sub">
-						<thead>
-							<tr>
-								<th>Thứ tự</th>
-								<th>Sản phẩm</th>
-								<th>Số lượng</th>
-								<th>Tên sản phẩm</th>
-								<th>Giá</th>
-								<th>Loại bỏ</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr class="rem1">
-								<td class="invert">1</td>
-								<td class="invert-image">
-									<input type="checkbox" name="sanpham1" value="sanpham_id">
-									<a href="single.html">
-										<img src="images/a.jpg" alt=" " class="img-responsive">
-									</a>
-								</td>
-								<td class="invert">
-									<div class="quantity">
-										<div class="quantity-select">
-											<div class="entry value-minus">&nbsp;</div>
-											<div class="entry value">
-												<span>1</span>
+			<div class="row">
+				<!-- product left -->
+				<div class="agileinfo-ads-display col-lg-9">
+					<div class="wrapper">
+						<div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mt-4">
+							<div class="row">
+								<div class="col-md-4 product-men">
+									<div class="men-pro-item simpleCart_shelfItem">
+										<div class="men-thumb-item text-center">
+											<img src="images/a4.jpg" alt="" class="img-fluid">
+											<div class="men-cart-pro">
+												<div class="inner-men-cart-pro">
+													<a href="single.html" class="link-product-add-cart">Xem sản phẩm</a>
+												</div>
 											</div>
-											<div class="entry value-plus active">&nbsp;</div>
+										</div>
+										<div class="item-info-product text-center border-top mt-4">
+											<h4 class="pt-1">
+												<a href="single.html">Nikon A2800</a>
+											</h4>
+											<div class="info-product-price my-2">
+												<span class="item_price">2.000.000</span>
+												<del>2.200.000</del>
+											</div>
+											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+												<form action="#" method="post">
+													<fieldset>
+														<input type="hidden" name="cmd" value="_cart" />
+														<input type="hidden" name="add" value="1" />
+														<input type="hidden" name="business" value=" " />
+														<input type="hidden" name="item_name" value="Dell Vostro Laptop" />
+														<input type="hidden" name="amount" value="252.00" />
+														<input type="hidden" name="discount_amount" value="1.00" />
+														<input type="hidden" name="currency_code" value="USD" />
+														<input type="hidden" name="return" value=" " />
+														<input type="hidden" name="cancel_return" value=" " />
+														
+													</fieldset>
+												</form>
+											</div>
+
 										</div>
 									</div>
-								</td>
-								<td class="invert">Back Cover</td>
-								<td class="invert">$259</td>
-								<td class="invert">
-									<div class="rem">
-										<div class="close1"> </div>
-									</div>
-								</td>
-							</tr>
-							<tr class="rem2">
-								<td class="invert">2</td>
-								<td class="invert-image">
-									<input type="checkbox" name="sanpham2" value="sanpham_id">
-									<a href="single2.html">
-										<img src="images/a4.jpg" alt=" " class="img-responsive">
-									</a>
-								</td>
-								<td class="invert">
-									<div class="quantity">
-										<div class="quantity-select">
-											<div class="entry value-minus">&nbsp;</div>
-											<div class="entry value">
-												<span>1</span>
+								</div>
+								<div class="col-md-4 product-men mt-md-0 mt-5 mt-5">
+									<div class="men-pro-item simpleCart_shelfItem">
+										<div class="men-thumb-item text-center">
+											<img src="images/sony.jpg" alt="" class="img-fluid">
+											<div class="men-cart-pro">
+												<div class="inner-men-cart-pro">
+													<a href="single.html" class="link-product-add-cart">Xem sản phẩm</a>
+												</div>
 											</div>
-											<div class="entry value-plus active">&nbsp;</div>
+										</div>
+										<div class="item-info-product text-center border-top mt-4">
+											<h4 class="pt-1">
+												<a href="single.html">Sony A6000</a>
+											</h4>
+											<div class="info-product-price my-2">
+												<span class="item_price">2.000.000</span>
+												<del>2.200.000</del>
+											</div>
+											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+												<form action="#" method="post">
+													<fieldset>
+														<input type="hidden" name="cmd" value="_cart" />
+														<input type="hidden" name="add" value="1" />
+														<input type="hidden" name="business" value=" " />
+														<input type="hidden" name="item_name" value="Acer Laptop" />
+														<input type="hidden" name="amount" value="240.00" />
+														<input type="hidden" name="discount_amount" value="1.00" />
+														<input type="hidden" name="currency_code" value="USD" />
+														<input type="hidden" name="return" value=" " />
+														<input type="hidden" name="cancel_return" value=" " />
+														
+													</fieldset>
+												</form>
+											</div>
+
 										</div>
 									</div>
-								</td>
-								<td class="invert">Cordless Trimmer</td>
-								<td class="invert">$1,999</td>
-								<td class="invert">
-									<div class="rem">
-										<div class="close2"> </div>
-									</div>
-								</td>
-							</tr>
-							<tr class="rem3">
-								<td class="invert">3</td>
-								<td class="invert-image">
-									<input type="checkbox" name="sanpham3" value="sanpham_id">
-									<a href="single.html">
-										<img src="images/a3.jpg" alt=" " class="img-responsive">
-									</a>
-								</td>
-								<td class="invert">
-									<div class="quantity">
-										<div class="quantity-select">
-											<div class="entry value-minus">&nbsp;</div>
-											<div class="entry value">
-												<span>1</span>
+								</div>
+								<div class="col-md-4 product-men mt-md-0 mt-5 mt-5">
+									<div class="men-pro-item simpleCart_shelfItem">
+										<div class="men-thumb-item text-center">
+											<img src="images/canon.png" alt="" class="img-fluid">
+											<div class="men-cart-pro">
+												<div class="inner-men-cart-pro">
+													<a href="single.html" class="link-product-add-cart">Xem sản phẩm</a>
+												</div>
 											</div>
-											<div class="entry value-plus active">&nbsp;</div>
+										</div>
+										<div class="item-info-product text-center border-top mt-4">
+											<h4 class="pt-1">
+												<a href="single.html">Canon S4</a>
+											</h4>
+											<div class="info-product-price my-2">
+												<span class="item_price">2.000.000</span>
+												<del>2.200.000</del>
+											</div>
+											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+												<form action="#" method="post">
+													<fieldset>
+														<input type="hidden" name="cmd" value="_cart" />
+														<input type="hidden" name="add" value="1" />
+														<input type="hidden" name="business" value=" " />
+														<input type="hidden" name="item_name" value="Alcatel Tablet" />
+														<input type="hidden" name="amount" value="300.00" />
+														<input type="hidden" name="discount_amount" value="1.00" />
+														<input type="hidden" name="currency_code" value="USD" />
+														<input type="hidden" name="return" value=" " />
+														<input type="hidden" name="cancel_return" value=" " />
+														
+													</fieldset>
+												</form>
+											</div>
 										</div>
 									</div>
-								</td>
-								<td class="invert">Nikon Camera</td>
-								<td class="invert">$37,490</td>
-								<td class="invert">
-									<div class="rem">
-										<div class="close3"> </div>
-									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+								</div>
+							</div>
+						</div>
+						
+					</div>
 				</div>
-				<h4 class="mb-sm-4 mb-3">Tổng số tiền:
-					<span>200 đ</span></h4>
-				<a href="payment.html"><button class="btn btn-danger" type="button">Mua ngay</button></a>
+				<!-- //product left -->
+				<!-- product right -->
+				<div class="col-lg-3 mt-lg-0 mt-4 p-lg-0">
+					<div class="side-bar p-sm-4 p-3">
+						<div class="search-hotel border-bottom py-2">
+							<h3 class="agileits-sear-head mb-3">Tìm kiếm</h3>
+							<form action="#" method="post">
+								<input type="search" placeholder="Sản phẩm..." name="search" required="">
+								<input type="submit" value=" ">
+							</form>
+						</div>
+						<!-- electronics -->
+						<div class="left-side border-bottom py-2">
+							<h3 class="agileits-sear-head mb-3">Thương hiệu</h3>
+							<ul>
+								<li>
+									<span class="span"><a href="#">Sony</a></span>
+								</li>
+								<li>
+									<span class="span"><a href="#">Nikon</a></span>
+								</li>
+								<li>
+									<span class="span"><a href="#">Canon</a></span>
+								</li>
+								<li>
+									<span class="span"><a href="#">Leica</a></span>
+								</li>
+								
+							</ul>
+						</div>
+						<!-- //electronics -->
+						<div class="range border-bottom py-2">
+							<h3 class="agileits-sear-head mb-3">Giá</h3>
+							<div class="w3l-range">
+								<ul>
+									<li>
+										<a href="#">Dưới 1 triệu</a>
+									</li>
+									<li class="my-1">
+										<a href="#">1 triệu - 2 triệu</a>
+									</li>
+									<li>
+										<a href="#">2 triệu - 3 triệu</a>
+									</li>
+									<li class="my-1">
+										<a href="#">3 triệu - 4 triệu</a>
+									</li>
+									<li>
+										<a href="#">4 triệu -  5 triệu</a>
+									</li>
+									<li>
+										<a href="#">5 triệu -  6 triệu</a>
+									</li>
+									<li>
+										<a href="#">6 triệu -  7 triệu</a>
+									</li>
+									<li>
+										<a href="#">7 triệu -  8 triệu</a>
+									</li>
+									<li class="mt-1">
+										<a href="#">Trên 8 triệu</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- //price -->
+						
+					</div>
+					<!-- //product right -->
+				</div>
 			</div>
 		</div>
 	</div>
-	<!-- //checkout page -->
-
+	<!-- //top products -->
 	<!-- footer -->
 	<footer>
 		<div class="footer-top-first">
@@ -448,7 +522,7 @@
 	<div class="copy-right py-3">
 		<div class="container">
 			<p class="text-center text-white">© 2020 Electro Store. All rights reserved | Design by
-				<a href="http://w3layouts.com"> DMTTN.</a>
+				<a href="http://w3layouts.com">DMTTN</a>
 			</p>
 		</div>
 	</div>
@@ -512,8 +586,8 @@
 				total += items[i].get('quantity');
 			}
 
-			if (total < 1) {
-				alert('The minimum order quantity is 1. Please add more to your shopping cart before checking out');
+			if (total < 3) {
+				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
 				evt.preventDefault();
 			}
 		});
@@ -538,50 +612,6 @@
 		}
 	</script>
 	<!-- //password-script -->
-
-	<!-- quantity -->
-	<script>
-		$('.value-plus').on('click', function () {
-			var divUpd = $(this).parent().find('.value'),
-				newVal = parseInt(divUpd.text(), 10) + 1;
-			divUpd.text(newVal);
-		});
-
-		$('.value-minus').on('click', function () {
-			var divUpd = $(this).parent().find('.value'),
-				newVal = parseInt(divUpd.text(), 10) - 1;
-			if (newVal >= 1) divUpd.text(newVal);
-		});
-	</script>
-	<!--quantity-->
-	<script>
-		$(document).ready(function (c) {
-			$('.close1').on('click', function (c) {
-				$('.rem1').fadeOut('slow', function (c) {
-					$('.rem1').remove();
-				});
-			});
-		});
-	</script>
-	<script>
-		$(document).ready(function (c) {
-			$('.close2').on('click', function (c) {
-				$('.rem2').fadeOut('slow', function (c) {
-					$('.rem2').remove();
-				});
-			});
-		});
-	</script>
-	<script>
-		$(document).ready(function (c) {
-			$('.close3').on('click', function (c) {
-				$('.rem3').fadeOut('slow', function (c) {
-					$('.rem3').remove();
-				});
-			});
-		});
-	</script>
-	<!-- //quantity -->
 
 	<!-- smoothscroll -->
 	<script src="js/SmoothScroll.min.js"></script>
