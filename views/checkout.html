@@ -2,7 +2,7 @@
 <html lang="zxx">
 
 <head>
-	<title>Electro Store Ecommerce </title>
+	<title>Electro Store Ecommerce Category Bootstrap Responsive Web Template | Checkout :: w3layouts</title>
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
@@ -69,86 +69,6 @@
 		</div>
 	</div>
 	<!-- //top-header -->
-
-	<!-- modals -->
-	<!-- log in -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title text-center">Đăng nhập</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form action="#" method="post">
-						<div class="form-group">
-							<label class="col-form-label">Tên đăng nhập</label>
-							<input type="text" class="form-control" placeholder=" " name="Name" required="">
-						</div>
-						<div class="form-group">
-							<label class="col-form-label">Mật khẩu</label>
-							<input type="password" class="form-control" placeholder=" " name="Password" required="">
-						</div>
-						<div class="right-w3l">
-							<input type="submit" class="form-control" value="Log in">
-						</div>
-						<div class="sub-w3l">
-							<div class="custom-control custom-checkbox mr-sm-2">
-								<input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-								<label class="custom-control-label" for="customControlAutosizing">Remember me?</label>
-							</div>
-						</div>
-						<p class="text-center dont-do mt-3">Bạn chưa có tài khoản?
-							<a href="#" data-toggle="modal" data-target="#exampleModal2">
-								Đăng ký ngay</a>
-						</p>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- register -->
-	<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Đăng ký</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form action="#" method="post">
-						<div class="form-group">
-							<label class="col-form-label">Tên</label>
-							<input type="text" class="form-control" placeholder=" " name="Name" required="">
-						</div>
-						<div class="form-group">
-							<label class="col-form-label">Email</label>
-							<input type="email" class="form-control" placeholder=" " name="Email" required="">
-						</div>
-						<div class="form-group">
-							<label class="col-form-label">Mật khẩu</label>
-							<input type="password" class="form-control" placeholder=" " name="Password" id="password1" required="">
-						</div>
-						<div class="form-group">
-							<label class="col-form-label">Xác nhận mật khẩu</label>
-							<input type="password" class="form-control" placeholder=" " name="Confirm Password" id="password2" required="">
-						</div>
-						<div class="right-w3l">
-							<input type="submit" class="form-control" value="Register">
-						</div>
-						<div class="sub-w3l">
-							
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- //modal -->
 	<!-- //top-header -->
 
 	<!-- header-bottom-->
@@ -170,12 +90,24 @@
 						<!-- search -->
 						<div class="col-10 agileits_search">
 							<form class="form-inline" action="#" method="post">
-								<input class="form-control mr-sm-2" type="search" placeholder="Nhập tên sản phảm" aria-label="Search" required>
+								<input class="form-control mr-sm-2" type="search" aria-label="Search" required>
 								<button class="btn my-2 my-sm-0" type="submit">Tìm kiếm</button>
 							</form>
 						</div>
 						<!-- //search -->
-						
+						<!-- cart details -->
+						<div class="col-2 top_nav_right text-center mt-sm-0 mt-2">
+							<div class="wthreecartaits wthreecartaits2 cart cart box_1">
+								<form action="#" method="post" class="last">
+									<input type="hidden" name="cmd" value="_cart">
+									<input type="hidden" name="display" value="1">
+									<button class="btn w3view-cart" type="submit" name="submit" value="">
+										<i class="fas fa-cart-arrow-down"></i>
+									</button>
+								</form>
+							</div>
+						</div>
+						<!-- //cart details -->
 					</div>
 				</div>
 			</div>
@@ -255,7 +187,7 @@
 			<!-- //tittle heading -->
 			<div class="checkout-right">
 				<h4 class="mb-sm-4 mb-3">Giỏ hàng của bạn gồm:
-					<span>3 Sản phẩm</span>
+					<span id="sl">3</span> Sản phẩm
 				</h4>
 				<div class="table-responsive">
 					<table class="timetable_sub">
@@ -273,7 +205,7 @@
 							<tr class="rem1">
 								<td class="invert">1</td>
 								<td class="invert-image">
-									<input type="checkbox" name="sanpham1" value="sanpham_id">
+									<input type="checkbox"class="checkmoney" name="sanpham" value="sanpham_id" onclick="tinhtien(0)">
 									<a href="single.html">
 										<img src="images/a.jpg" alt=" " class="img-responsive">
 									</a>
@@ -283,14 +215,18 @@
 										<div class="quantity-select">
 											<div class="entry value-minus">&nbsp;</div>
 											<div class="entry value">
-												<span>1</span>
+												1
 											</div>
 											<div class="entry value-plus active">&nbsp;</div>
 										</div>
 									</div>
 								</td>
 								<td class="invert">Back Cover</td>
-								<td class="invert">$259</td>
+								<td class="invert">
+									<span class="tiensp">
+										100000
+									</span> vnđ
+								</td>
 								<td class="invert">
 									<div class="rem">
 										<div class="close1"> </div>
@@ -300,7 +236,7 @@
 							<tr class="rem2">
 								<td class="invert">2</td>
 								<td class="invert-image">
-									<input type="checkbox" name="sanpham2" value="sanpham_id">
+									<input type="checkbox" name="sanpham" value="sanpham_id" onclick="tinhtien(1)">
 									<a href="single2.html">
 										<img src="images/a4.jpg" alt=" " class="img-responsive">
 									</a>
@@ -310,14 +246,18 @@
 										<div class="quantity-select">
 											<div class="entry value-minus">&nbsp;</div>
 											<div class="entry value">
-												<span>1</span>
+												1
 											</div>
 											<div class="entry value-plus active">&nbsp;</div>
 										</div>
 									</div>
 								</td>
 								<td class="invert">Cordless Trimmer</td>
-								<td class="invert">$1,999</td>
+								<td class="invert">
+									<span class ="tiensp">
+										200000
+									</span> vnđ
+								</td>
 								<td class="invert">
 									<div class="rem">
 										<div class="close2"> </div>
@@ -327,7 +267,7 @@
 							<tr class="rem3">
 								<td class="invert">3</td>
 								<td class="invert-image">
-									<input type="checkbox" name="sanpham3" value="sanpham_id">
+									<input type="checkbox" name="sanpham" value="sanpham_id" onclick="tinhtien(2)">
 									<a href="single.html">
 										<img src="images/a3.jpg" alt=" " class="img-responsive">
 									</a>
@@ -337,14 +277,18 @@
 										<div class="quantity-select">
 											<div class="entry value-minus">&nbsp;</div>
 											<div class="entry value">
-												<span>1</span>
+												1
 											</div>
 											<div class="entry value-plus active">&nbsp;</div>
 										</div>
 									</div>
 								</td>
 								<td class="invert">Nikon Camera</td>
-								<td class="invert">$37,490</td>
+								<td class="invert">
+									<span class ="tiensp">
+										300000
+									</span> vnđ
+								</td>
 								<td class="invert">
 									<div class="rem">
 										<div class="close3"> </div>
@@ -355,7 +299,9 @@
 					</table>
 				</div>
 				<h4 class="mb-sm-4 mb-3">Tổng số tiền:
-					<span>200 đ</span></h4>
+					
+						<span id="money">0</span> vnđ
+				</h4>
 				<a href="payment.html"><button class="btn btn-danger" type="button">Mua ngay</button></a>
 			</div>
 		</div>
@@ -369,8 +315,7 @@
 				<!-- footer first section -->
 				<h2 class="footer-top-head-w3l font-weight-bold mb-2">Giới thiệu về chúng tôi</h2>
 				<p class="footer-main mb-4">
-					Nếu bạn đang cân nhắc một chiếc máy tính xách tay mới, điện thoại mới hoặc mua một chiếc máy ảnh mới, chúng tôi sẽ giúp bạn dễ dàng tìm thấy chính xác những gì bạn cần với mức giá bạn có thể mua được. Nếu bạn đang muốn bán những sản phẩm như máy tính,máy ảnh, điện thoại và phụ kiện thì chúng tôi sẽ giúp bạn bán dễ dàng.
-				</p>
+					Nếu bạn đang cân nhắc một chiếc máy tính xách tay mới, điện thoại mới hoặc mua một chiếc máy ảnh mới, chúng tôi sẽ giúp bạn dễ dàng tìm thấy chính xác những gì bạn cần với mức giá bạn có thể mua được. Nếu bạn đang muốn bán những sản phẩm như máy tính,máy ảnh, điện thoại và phụ kiện thì chúng tôi sẽ giúp bạn bán dễ dàng.</p>
 				<!-- //footer first section -->
 				<!-- footer second section -->
 				<div class="row w3l-grids-footer border-top border-bottom py-sm-4 py-3">
@@ -409,7 +354,6 @@
 					</div>
 				</div>
 				<!-- //footer second section -->
-
 			</div>
 		</div>
 		<!-- footer third section -->
@@ -671,7 +615,26 @@
 	<script src="js/bootstrap.js"></script>
 	<!-- //for bootstrap working -->
 	<!-- //js-files -->
-
+	<script language="javascript">
+      function tinhtien(i)
+      {
+      	 var money = document.getElementById("money").innerHTML;
+      	 money = parseInt(money);
+      	 var checkbox = document.getElementsByName('sanpham');
+      	 var sl = document.getElementById("sl").innerHTML;
+	      	 var tiensp = document.getElementsByClassName("tiensp");
+	      	 var soluong = document.getElementsByClassName("value");
+	  		 var tiensp1 = tiensp[i].innerHTML;
+	  		 var soluong1 = soluong[i].innerHTML;
+	  		 if(checkbox[i].checked == true){
+	  		   money = money + soluong1*tiensp1;
+	  	 	}else{
+	  	 		if(money >= soluong1*tiensp1)
+	  	 		money = money - soluong1*tiensp1;
+	  	 	}
+      	 document.getElementById("money").innerHTML = money;
+      }
+    </script>
 </body>
 
 </html>
