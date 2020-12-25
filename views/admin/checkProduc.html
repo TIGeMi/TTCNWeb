@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Electro Store Ecommerce</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="Electro Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"
+	/>
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+
+	</script>
+	<!-- //Meta tag Keywords -->
+
+	<!-- Custom-Files -->
+	<script type="text/javascript" src="1.js"></script>
+	<link rel="stylesheet" href="1.css">
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- Bootstrap css -->
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- Main css -->
+	<link rel="stylesheet" href="css/fontawesome-all.css">
+	<!-- Font-Awesome-Icons-CSS -->
+	<link href="css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- pop-up-box -->
+	<link href="css/menu.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- menu style -->
+	<!-- //Custom-Files -->
+
+	<!-- web fonts -->
+	<link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+	    rel="stylesheet">
+	<!-- //web fonts -->
+
+</head>
+
+<body>
+	<script type="text/javascript">
+            let alowRegister = false;
+
+            function emailERR(msg) {
+                var child = document.getElementById(msg);
+                child.remove()
+                /*var child1 = document.getElementById("name");
+                child1.remove()
+                var child2 = document.getElementById("img");
+                child2.remove()
+                var child3 = document.getElementById("nameproduct");
+                child3.remove()*/
+
+                /*err = document.createElement("p");
+                err.setAttribute("id", "err")
+                var node = document.createTextNode(msg);
+                err.appendChild(node);
+                var element = document.getElementById("emailERR");
+                element.appendChild(err);*/
+            }
+            function checkEmail() {
+                var id = $("#id").val();
+                console.log(id)
+                $.ajax({
+                    url: '/checkProduct',
+                    type: 'POST',
+                    cache: false,
+                    data: { id: id },
+                    success: function (data) {
+                        if (data.duplicate) {
+                            emailERR("email Đã tồn tại")
+                            alowRegister = false
+                        }
+                        else {
+                            emailERR("Email hợp lệ");
+                            alowRegister = true
+                        }
+                    }
+                    , error: function (jqXHR, textStatus, err) {
+                        alert('text status ' + textStatus + ', err ' + err)
+                    }
+                })
+            }
+            function hello() {
+                var forms = document.forms["f1"]
+                if(forms.checkValidity()) {
+                    var Email = $("#Email").val();
+                    var Password = $("#Password").val();
+                    var Name = $("#Name").val();
+
+                    if(alowRegister) {
+                        $.ajax({
+                        url: '/register',
+                        type: 'POST',
+                        cache: false,
+                        data: { Email, Password, Name },
+                        success: function (data) {
+                            alert("Đăng kí thành công, trở về trang chủ");
+                            location.reload();
+                        }
+                        , error: function (jqXHR, textStatus, err) {
+                            alert('text status ' + textStatus + ', err ' + err)
+                        }
+                        })
+                    }
+                } else alert("Vui Lòng điền đầy đủ")
+                
+            }
+                          
+        </script>
+	<div class="agile-main-top">
+		<div class="container-fluid">
+			<div class="row main-top-w3l py-2">
+				<div class="col-lg-6 header-most-top">
+				</div>
+				<div class="col-lg-6 header-right mt-lg-0 mt-3">
+					<!-- header lists -->
+					<ul>
+						<li class="text-center border-right text-white">
+							<a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
+								<i class="fas fa-sign-in-alt mr-2"></i> Log In </a>
+						</li>
+						<li class="text-center text-white">
+							<a href="#" data-toggle="modal" data-target="#exampleModal2" class="text-white">
+								<i class="fas fa-sign-out-alt mr-2"></i>Register </a>
+						</li>
+					</ul>
+					<!-- //header lists -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- modals -->
+	<!-- log in -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title text-center">Log In</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form action="#" method="post">
+						<div class="form-group">
+							<label class="col-form-label">Username</label>
+							<input type="text" class="form-control" placeholder=" " name="Name" required="">
+						</div>
+						<div class="form-group">
+							<label class="col-form-label">Password</label>
+							<input type="password" class="form-control" placeholder=" " name="Password" required="">
+						</div>
+						<div class="right-w3l">
+							<input type="submit" class="form-control" value="Log in">
+						</div>
+						<div class="sub-w3l">
+							<div class="custom-control custom-checkbox mr-sm-2">
+								<input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+								<label class="custom-control-label" for="customControlAutosizing">Remember me?</label>
+							</div>
+						</div>
+						<p class="text-center dont-do mt-3">Don't have an account?
+							<a href="#" data-toggle="modal" data-target="#exampleModal2">
+								Register Now</a>
+						</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- register -->
+	<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Register</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form action="#" method="post">
+						<div class="form-group">
+							<label class="col-form-label">Your Name</label>
+							<input type="text" class="form-control" placeholder=" " name="Name" required="">
+						</div>
+						<div class="form-group">
+							<label class="col-form-label">Email</label>
+							<input type="email" class="form-control" placeholder=" " name="Email" required="">
+						</div>
+						<div class="form-group">
+							<label class="col-form-label">Password</label>
+							<input type="password" class="form-control" placeholder=" " name="Password" id="password1" required="">
+						</div>
+						<div class="form-group">
+							<label class="col-form-label">Confirm Password</label>
+							<input type="password" class="form-control" placeholder=" " name="Confirm Password" id="password2" required="">
+						</div>
+						<div class="right-w3l">
+							<input type="submit" class="form-control" value="Register">
+						</div>
+						<div class="sub-w3l">
+							<div class="custom-control custom-checkbox mr-sm-2">
+								<input type="checkbox" class="custom-control-input" id="customControlAutosizing2">
+								<label class="custom-control-label" for="customControlAutosizing2">I Accept to the Terms & Conditions</label>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //modal -->
+	<!-- //top-header -->
+
+	<!-- header-bottom-->
+	<div class="header-bot">
+		<div class="container">
+			<div class="row header-bot_inner_wthreeinfo_header_mid">
+				<!-- logo -->
+				<div class="col-md-3 logo_agile">
+					<h1 class="text-center">
+						<a href="index.html" class="font-weight-bold font-italic">
+							<img src="images/logo2.png" alt=" " class="img-fluid">Cửa hàng
+						</a>
+					</h1>
+				</div>
+				<!-- //logo -->
+				<!-- header-bot -->
+				<div class="col-md-9 header mt-4 mb-md-0 mb-4">
+					<div class="row">
+						<!-- search -->
+						<div class="col-10 agileits_search">
+							<form class="form-inline" action="#" method="post">
+								<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" required>
+								<button class="btn my-2 my-sm-0" type="submit">Search</button>
+							</form>
+						</div>
+						<!-- //search -->
+						<!-- cart details -->
+						<div class="col-2 top_nav_right text-center mt-sm-0 mt-2">
+							<div class="wthreecartaits wthreecartaits2 cart cart box_1">
+								<form action="#" method="post" class="last">
+									<input type="hidden" name="cmd" value="_cart">
+									<input type="hidden" name="display" value="1">
+									<button class="btn w3view-cart" type="submit" name="submit" value="">
+										<i class="fas fa-cart-arrow-down"></i>
+									</button>
+								</form>
+							</div>
+						</div>
+						<!-- //cart details -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- shop locator (popup) -->
+	<!-- //header-bottom -->
+	<!-- navigation -->
+	<div class="navbar-inner">
+		<div class="container">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ml-auto text-center mr-xl-5">
+						<li class="nav-item active mr-lg-2 mb-lg-0 mb-2">
+							<a class="nav-link" href="index.html">Trang chủ</a>
+						</li>
+						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
+							<a class="nav-link" href="product.html" role="button" aria-haspopup="true" aria-expanded="false">
+								Điện thoại
+							</a>
+						</li>
+						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
+							<a class="nav-link" href="product.html" role="button" aria-haspopup="true" aria-expanded="false">
+								Máy tính
+							</a>
+						</li>
+						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
+							<a class="nav-link" href="product.html" role="button" aria-haspopup="true" aria-expanded="false">
+								Máy giặt
+							</a>
+						</li>
+						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
+							<a class="nav-link" href="product.html" role="button" aria-haspopup="true" aria-expanded="false">
+								Tủ lạnh
+							</a>
+						</li>
+						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
+							<a class="nav-link" href="product.html" role="button" aria-haspopup="true" aria-expanded="false">
+								Máy lạnh
+							</a>
+						</li>
+						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Trang
+							</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="product.html">Sản phẩm mới</a>
+								<a class="dropdown-item" href="checkout.html">Kiểm tra hàng</a>
+								<a class="dropdown-item" href="payment.html">Thanh toán</a>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="contact.html">Liên hệ</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</div>
+	<!-- Start slogan -->
+	<div class="slogan">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9 col-xs-12 slogan">
+					<div class="above-slogan">
+
+					</div>
+					<div class="below-slogan">
+
+					</div>
+					<div class="challenges">
+
+					</div>
+				</div>
+				<div class="col-md-3 col-xs-12">
+					<div class="nickname">
+						<h2 class="text-center">
+							Nguyễn Sỹ Tuấn Thành
+						</h2>
+					</div>
+					<div class="avatar text-center">
+						<img class="anh5" src="images/avatar.png" alt="Khong the tai anh">
+					</div>
+					<div class="button">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End slogan -->
+	<!--Start select-->
+	<div class="col-xs-12">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 text-center">
+					<div class="input-group" id="input-task-search">
+						<input id="search-task" name="Name" type="text" class="form-control"
+							placeholder="Nhập nội dung tìm kiếm">
+						<span class="input-group-addon btn"><i class="cl-icon-search"></i></span>
+					</div>
+				</div>				<div id="gr-search" class="col-sm-4 text-center">
+					<div class="row">
+						<div class="col-sm-6 text-center">
+						<select name="Status" id="search-status" class="form-control">
+							<option value="0">Trạng thái</option>
+							<option value="1">Đã hoàn thành</option>
+							<option value="3">Chưa hoàn thành</option>
+							<option value="2">Chưa làm</option>
+						</select>
+					</div>
+					<div class="col-sm-6 text-center">
+						<select id="search-level" name="LevelId" class="form-control false">
+							<option value="0">Cấp độ</option>
+							<option value="1">Đơn giản</option>
+							<option value="2">Trung bình</option>
+						</select>
+					</div>
+					</div>
+				</div>
+				<div class="col-sm-4 text-center">
+					<div class="task-filter-column">
+						<select id="search-time" name="Time" class="form-control">
+							<option value="1">Ngày sửa</option>
+							<option value="0">Gợi ý</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="privacy py-sm-5 py-4">
+		<div class="container py-xl-4 py-lg-2">
+			<!-- tittle heading -->
+			<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+				<span>K</span>iểm 
+				<span>T</span>ra
+				<span>S</span>ản
+				<span>P</span>hẩm
+			</h3>
+			<!-- //tittle heading -->
+			<div class="checkout-right">
+				<h4 class="mb-sm-4 mb-3">Số lượng kiểm tra còn lại:
+					<span>3 Sản phẩm</span>
+				</h4>
+				<div class="table-responsive">
+					<table class="timetable_sub">
+						<thead>
+							<tr>
+								<th>Thứ tự</th>
+								<th>Tên cửa hàng</th>
+								<th>Sản phẩm</th>
+								<th>Tên sản phẩm</th>
+								<th>Chấp thuận</th>
+								<th>Loại bỏ</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="rem1" id = "sp1">
+								<td class="invertcount"></td>
+								<td id = "name">A 1</td>
+								<td class="invert-image" id = "img">
+									<a href="single.html">
+										<img src="images/a.jpg" alt=" " class="img-responsive">
+									</a>
+								</td>
+								<td class="invert" id = "nameproduct">Back Cover</td>
+								<td class="invert">
+										<div class="add">
+										<input type="submit" name="addproduct" value = "Đồng ý" onclick= 'emailERR("sp1")'></div>
+								</td>
+								<td class="invert">
+									<div class="rem">
+										<div class="close1"> </div>
+									</div>
+								</td>
+								<input type="hidden" name="" id = "#">
+							</tr>
+							<tr class="rem2" id = "sp2">
+								<td class="invertcount"></td>
+								<td>A 2</td>
+								<td class="invert-image">
+									<a href="single2.html">
+										<img src="images/a4.jpg" alt=" " class="img-responsive">
+									</a>
+								</td>
+								<td class="invert">Cordless Trimmer</td>
+								<td class="invert">
+										<div class="add">
+										<input type="submit" name="addproduct" value = "Đồng ý" onclick= 'emailERR("sp2")'></div>
+								</td>
+								<td class="invert">
+									<div class="rem">
+										<div class="close2"> </div>
+									</div>
+								</td>
+							</tr>
+							<tr class="rem3" id = "sp3">
+								<td class="invertcount"></td>
+								<td>A 3</td>
+								<td class="invert-image">
+									<a href="single.html">
+										<img src="images/a3.jpg" alt=" " class="img-responsive">
+									</a>
+								</td>
+								<td class="invert">Nikon Camera</td>
+								<td class="invert">
+										<div class="add">
+										<input type="submit" name="addproduct" value = "Đồng ý" onclick= 'emailERR("sp3")'></div>
+								</td>
+								<td class="invert">
+									<div class="rem">
+										<div class="close3"> </div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
