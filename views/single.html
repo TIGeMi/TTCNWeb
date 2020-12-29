@@ -276,8 +276,9 @@
 						</div>
 					</div>
 				</div>
-
+				<form action="#" name="f1" method="POST">
 				<div class="col-lg-7 single-right-left simpleCart_shelfItem">
+					<div hidden="hidden" id="product_id">2</div>
 					<h3 class="mb-3">Samsung Galaxy J7 Prime (Gold, 16 GB) (3 GB RAM)</h3>
 					<h3 class="mb-1">Được bán bởi <a href= "#">SamSung Official Store</a></h3>
 					<p class="mb-3">
@@ -289,7 +290,7 @@
 						<p class="my-3">
 							<i class="far fa-hand-point-right mr-2"></i>
 							Bảo hành 1 năm</p>
-						<ul>
+						<ul >
 							<li class="mb-1">
 								3 GB RAM | 16 GB ROM | Expandable Upto 256 GB
 							</li>
@@ -307,56 +308,69 @@
 							</li>		
 						</ul>
 						
-						<div class="quantity">
+						<div class="quantity mb-3">
 							<div class="quantity-select">
 								Số lượng
 								<div class="entry value-minus">&nbsp;</div>
-									<div class="entry value">
-										<span>1</span>
+									<div class="entry value" id="quantity">
+										1
 									</div>
 								<div class="entry value-plus active">&nbsp;</div>
 								100 sản phẩm có sẵn
 							</div>
 						</div>
-
 					</div>
-					<div class="occasion-cart">
-						<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-							<form action="checkout.html" method="post">
-								<fieldset>
-									<table>
-										<tr>
-											<td><input type="hidden" name="cmd" value="_cart" /></td>
-											<td><input type="hidden" name="add" value="1" /></td>
-										</tr>	
-											
-										<tr>
-											<td><input type="hidden" name="business" value="SamSung Official Store"/></td>
-											<td><input type="hidden" name="item_name" value="Samsung Galaxy J7 Prime" /></td>
-										</tr>	
-											
-										<tr>	
-											<td><input type="hidden" name="amount" value="200.00" /></td>
-											<td><input type="hidden" name="discount_amount" value="1.00" /></td>
-										</tr>
-										<tr colspan = 2>	
-											<td><input type="hidden" name="currency_code" value="USD" /></td>
-										</tr>	
-										<tr>
-											<td><input type="submit" name="addtocart" value="Thêm vào giỏ hàng" class="button" /></td>
-										</tr>	
-									</table>
-								</fieldset>
-							</form>
-						</div>
+					<div>
+						<a href="#" data-toggle="modal" data-target="#exampleModal3" class="text-white">
+							<input type="button" class="btn btn-primary" value="Thêm vào giỏ hàng" onclick="themsanpham()">
+							
+						</a>
 					</div>
+					<!-- Modal HTML -->	
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>
+
+	<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title text-center">Thêm sản phẩm</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<form action="#" method="post">
+										<div class="form-group">
+											<label class="col-form-label">Thêm sản phẩm vào giỏ hàng thành công</label>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>	     
 	<!-- //Single Page -->
 
-	
+	<div class="modal" tabindex="-1">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Modal title</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	        <p>Modal body text goes here.</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 	<!-- footer -->
 	<footer>
 		<div class="footer-top-first">
@@ -657,6 +671,28 @@
 		});
 	</script>
 	<!--quantity-->
+	<script type="text/javascript">
+    function themsanpham() {
+        var forms = document.forms["f1"]
+        var product_id = document.getElementById("product_id").innerHTML;
+        var quantity_of_cart_item = document.getElementById("quantity").innerHTML;
+        var cart_id = $("#cart_id").val();
+       	alert(quantity_of_cart_item);
+        $.ajax({
+        url: '/addCartItem',
+        type: 'POST',
+        cache: false,
+        data: { quantity_of_cart_item, cart_id, product_id },
+        success: function (data) {
+            window.location.href = "/checkout"
+        }
+        , error: function (jqXHR, textStatus, err) {
+            alert('text status ' + textStatus + ', err ' + err)
+        }
+        })
+    }
+                  
+	</script>
 </body>
 
 </html>
