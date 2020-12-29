@@ -49,6 +49,57 @@
 				</div>
 				<div class="col-lg-6 header-right mt-lg-0 mt-3">
 					<!-- header lists -->
+                    <% if(session_user.role == 0) { %>
+                        <ul>
+                            <li>
+                                <a class="btn btn-danger" href="add-product"> Đăng sản phẩm</a>						
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle col-2" href="#" role="button" >
+                                    <span><img src="images/man.png" class="rounded-circle" alt="" width="30" height="30"></span>
+                                </a>
+                                <div class="dropdown-menu">
+                                    Xin chào: <span style="color:rgb(255,0,0)"><%=session_user.name%></span>
+                                    <a class="dropdown-item" href="profile">Thông tin cá nhân</a>
+                                    <a class="dropdown-item" href="my-order">Quản lý đơn hàng</a>
+                                    <a class="dropdown-item" href="logout">Đăng xuất</a>
+                                </div>
+                            </li>
+                        </ul>
+
+                    <% } else if(session_user.role == 1) { %>
+                        <ul>
+                            <li>
+                                <a class="btn btn-danger" href="add-product"> Đăng sản phẩm</a>							
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle col-2" href="#" role="button" >
+                                    <span><img src="images/man.png" class="rounded-circle" alt="" width="30" height="30"></span>
+                                </a>
+                                <div class="dropdown-menu">
+                                    Xin chào: <span style="color:rgb(255,0,0)"><%=session_user.name%></span>
+                                    <a class="dropdown-item" href="profile">Thông tin cá nhân</a>
+                                    <a class="dropdown-item" href="manage-product">Quản lý mặt hàng</a>
+                                    <a class="dropdown-item" href="manage-order">Quản lý đơn hàng</a>
+                                    <a class="dropdown-item" href="logout">Đăng xuất</a>
+                                </div>
+                            </li>
+                        </ul>
+                    <% } else if(session_user.role == 2) { %> 
+                        <ul>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle col-2" href="#" role="button" >
+                                    <span><img src="images/man.png" class="rounded-circle" alt="" width="30" height="30"></span>
+                                </a>
+                                <div class="dropdown-menu">
+                                    Xin chào: <span style="color:rgb(255,0,0)"><%=session_user.name%></span>
+                                    <a class="dropdown-item" href="admin/manage-user">Quản lý người bán</a>
+                                    <a class="dropdown-item" href="admin/manage-product">Quản lý sản phẩm</a>
+                                    <a class="dropdown-item" href="logout">Đăng xuất</a>
+                                </div>
+                            </li>
+                        </ul>
+                    <% } else { %>   
 					<ul>
 						<li class="text-center border-right text-white">
 							<a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
@@ -56,9 +107,10 @@
 						</li>
 						<li class="text-center text-white">
 							<a href="#" data-toggle="modal" data-target="#exampleModal2" class="text-white">
-								<i class="fas fa-sign-out-alt mr-2"></i>Đăng ký </a>
+								<i class="fas fa-sign-out-alt mr-2"></i>Đăng ký</a>
 						</li>
-					</ul>
+                    </ul>
+                    <% } %>
 					<!-- //header lists -->
 				</div>
 			</div>
@@ -78,19 +130,19 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="#" method="post">
+					<form id="login-form">
 						<div class="form-group">
-							<label class="col-form-label">Tên đăng nhập</label>
-							<input type="text" class="form-control" placeholder=" " name="Name" required="">
+							<label class="col-form-label">Email</label>
+							<input type="text" class="form-control" placeholder=" " id = "log-email" name= "log-email" required="">
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Mật khẩu</label>
-							<input type="password" class="form-control" placeholder=" " name="Password" required="">
+							<input type="password" class="form-control" placeholder=" " id = "log-password" name="log-password" required="">
 						</div>
-						<div class="right-w3l">
-							<input type="submit" class="form-control" value="Đăng nhập">
-						</div>
-						
+						<div class="">
+                            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="login()"> Đăng nhập </button>
+                        </div>
+                        <p id="login-state">  </p>
 						<p class="text-center dont-do mt-3">Bạn chưa có tài khoản?
 							<a href="#" data-toggle="modal" data-target="#exampleModal2">
 								Đăng ký ngay!</a>
@@ -111,26 +163,28 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<form action="#" method="post">
+					<form name= register-form method=post action="#">
 						<div class="form-group">
 							<label class="col-form-label">Tên</label>
-							<input type="text" class="form-control" id = "Name" name= "Name" required="">
+							<input type="text" class="form-control" id = "reg-name" name= "reg-name" required>
 						</div>
 						<div class="form-group" id="emailERR">
 							<label class="col-form-label">Email</label>
-							<input type="email" class="form-control" id = "Email" name= "Email" required="" onchange="checkEmail()">
+							<input type="email" class="form-control" id = "reg-email" name= "reg-email" required onchange="checkEmail()">
 							<p id="err"></p>
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Mật khẩu</label>
-							<input type="password" class="form-control" id="Password" name="Password"required="">
+							<input type="password" class="form-control" id="reg-password" name="reg-password"required>
 						</div>
 						<div class="form-group">
 							<label class="col-form-label">Xác nhận mật khẩu</label>
-							<input type="password" class="form-control" placeholder=" " name="Confirm Password" id="password2" required="">
-						</div>
-						<div class="right-w3l">
-							<input type="submit" class="form-control" value="Đăng ký" onclick="hello()">
+							<input type="password" class="form-control" placeholder=" " name="reg-password2" id="reg-password2" required>
+                            <p id="reg-password-check">  </p>
+                        </div>
+						<div class="right-w3l" id = Button>
+                            <button type="button" id = registerButton class="btn btn-primary btn-lg btn-block" onclick="register()"> Đăng ký </button>
+							<!-- <input type="submit" id = registerButton class="form-control" value="Đăng ký"> -->
 						</div>
 					</form>
 				</div>
@@ -167,14 +221,35 @@
 						<!-- cart details -->
 						<div class="">
 							<div class="">
-								<form action="checkout.html" method="post" >
-									
-									<button class="btn w3view-cart" type="submit" name="submit" value="">
+								<form action="" method="post" >
+									<button class="btn w3view-cart" type="button" name="submit" value="" onclick="CartAccess()">
 										<i class="fas fa-cart-arrow-down"></i>
 									</button>
 								</form>
 							</div>
-						</div>
+                        </div>
+                        <script type="text/javascript">
+                            function CartAccess() {
+                                console.log("vao ham cartaccess")
+                                $.ajax({
+                                url: '/checkout',
+                                type: 'POST',
+                                cache: false,
+                                data: {},
+                                success: function (data) {
+                                    console.log("data", data);
+                                    if(data.accessCart == false) {
+                                        alert("Bạn phải đăng nhập để sử dụng chức năng giỏ hàng")
+                                    } else {
+                                        window.location.replace(data.url)
+                                    }
+                                }
+                                , error: function (jqXHR, textStatus, err) {
+                                    alert('text status ' + textStatus + ', Loi roi ' + err)
+                                }
+                                })
+                            }           
+                        </script>
 						<!-- //cart details -->
 					</div>
 				</div>
@@ -278,7 +353,7 @@
 				</div>
 				<form action="#" name="f1" method="POST">
 				<div class="col-lg-7 single-right-left simpleCart_shelfItem">
-					<div hidden="hidden" id="product_id">2</div>
+					<div hidden="hidden" id="product_id">1</div>
 					<h3 class="mb-3">Samsung Galaxy J7 Prime (Gold, 16 GB) (3 GB RAM)</h3>
 					<h3 class="mb-1">Được bán bởi <a href= "#">SamSung Official Store</a></h3>
 					<p class="mb-3">
@@ -677,7 +752,8 @@
         var product_id = document.getElementById("product_id").innerHTML;
         var quantity_of_cart_item = document.getElementById("quantity").innerHTML;
         var cart_id = $("#cart_id").val();
-       	alert(quantity_of_cart_item);
+		   alert(product_id);
+		   alert(quantity_of_cart_item);
         $.ajax({
         url: '/addCartItem',
         type: 'POST',
@@ -686,9 +762,10 @@
         success: function (data) {
             window.location.href = "/checkout"
         }
-        , error: function (jqXHR, textStatus, err) {
-            alert('text status ' + textStatus + ', err ' + err)
-        }
+		, 
+		error: function (e) {
+                        console.log(e.message);
+                    }
         })
     }
                   
