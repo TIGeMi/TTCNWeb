@@ -256,12 +256,42 @@
 
 				<div>
 					
-					<form action="#" method="post" class="creditly-card-form agileinfo_form">
+					<form action="index1.html" method="post" class="creditly-card-form agileinfo_form">
 						<div class="creditly-wrapper wthree, w3_agileits_wrapper">
 							<div class="credit-card-wrapper">
 								<div class="first-row form-group">
 								</div>
-								
+								<table class="timetable_sub" hidden="hidden">
+									<thead>
+										<tr>
+											<th>Thứ tự</th>
+											<th>Tên sản phẩm</th>
+											<th>Số lượng</th>
+											<th>Giá</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="rem1">
+											<td class="invert">1</td>
+											<td class="invert">Back Cover</td>
+											<td class="invert">1</td>
+											<td class="invert">100000000</td>
+										</tr>
+										<tr class="rem2">
+											<td class="invert">2</td>
+											<td class="invert">Cordless Trimmer</td>
+											<td class="invert">2</td>
+											<td class="invert">1</td>
+										</tr>
+										<tr class="rem3">
+											<td class="invert">3</td>
+											<td class="invert">Nikon Camera</td>
+											<td class="invert">100</td>
+											<td class="invert">1</td>
+										</tr>
+									</tbody>
+								</table>
+								<br>
 									<div class="controls">
 										<label class="control-label">Tổng số tiền phải thanh toán (VNĐ)</label>
 										<input class="billing-address-name form-control" type="text" name="name" value="20000000">
@@ -312,7 +342,11 @@
 										<h5>Lưu ý kiểm tra mã đơn hàng, mã vận đơn và người gửi trước khi thanh toán</h5>
 										<div class="swit-radio">
 										</div>
-										<input type="submit" value="Xác nhận">
+										<div>
+											<a href="#" data-toggle="modal" data-target="#exampleModal3" class="text-white">
+												<input type="button" class="btn btn-primary" value="Xác nhận" onclick="muathanhcong()">	
+											</a>
+										</div>
 									</form>
 									</div>
 								</div>
@@ -354,7 +388,11 @@
 										</div>
 										<div class="clearfix"></div>
 									</div>
-									<input type="submit" value="Xác nhận">
+									<div>
+										<a href="#" data-toggle="modal" data-target="#exampleModal3" class="text-white">
+											<input type="button" class="btn btn-primary" value="Xác nhận" onclick="muathanhcong()">	
+										</a>
+									</div>
 								</form>
 							</div>
 						</div>
@@ -365,6 +403,24 @@
 		</div>
 	</div>
 	<!-- //payment page -->
+	<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title text-center">Mua hàng thành công</h5>
+					<a href="index1.html"><button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button></a>
+				</div>
+				<div class="modal-body">
+					<form method="post">
+						<div class="form-group">
+							<label class="col-form-label">Sản phẩm sẽ được giao đến cho bạn trong khoảng 3-5 ngày</label>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>	     
+<!-- //Single Page -->
 	<!-- footer -->
 	<footer>
 		<div class="footer-top-first">
@@ -701,6 +757,28 @@
 	<script src="js/bootstrap.js"></script>
 	<!-- //for bootstrap working -->
 	<!-- //js-files -->
+	<script type="text/javascript">
+		function muathanhcong() {
+			var forms = document.forms["f1"]
+			var product_id = document.getElementById("product_id").innerHTML;
+			var quantity_of_cart_item = document.getElementById("quantity").innerHTML;
+			var cart_id = $("#cart_id").val();
+			   alert(quantity_of_cart_item);
+			$.ajax({
+			url: '/addCartItem',
+			type: 'POST',
+			cache: false,
+			data: { quantity_of_cart_item, cart_id, product_id },
+			success: function (data) {
+				window.location.href = "/checkout"
+			}
+			, error: function (jqXHR, textStatus, err) {
+				alert('text status ' + textStatus + ', err ' + err)
+			}
+			})
+		}
+					  
+		</script>
 
 </body>
 
