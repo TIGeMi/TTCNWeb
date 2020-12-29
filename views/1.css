@@ -113,6 +113,12 @@ img.anh5 {
 .tbcol.address{
     width:20%
 }
+.tbcol.nameitem{
+    width:25%;
+}
+.tbcol.countitem{
+    width: 10%
+}
 .user-info .avatars{
     margin-right:10px
 }
@@ -171,7 +177,4 @@ td.invertcount:before {
 div.tbcol.id.count:before {
     counter-increment: second;
     content: counter(second);
-}
-li.user{
-  display: inline;
 }
