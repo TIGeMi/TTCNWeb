@@ -340,10 +340,11 @@
 							<input type="text" class="form-control" id = "pro-name" name= "pro-name" placeholder="" required="">
 						</div>
 					</div>
-					<div class="row">
+					<div class="row" id="emailERR">
 						<div class="col-md-12 col-sm-6 contact-form1 form-group">
 							<label class="col-form-label">E-mail</label>
 							<input type="text" class="form-control" id = "pro-e" name= "pro-e" placeholder="" required="">
+							<p id="err"></p>
 						</div>
 					</div>
 					<div class="row">
@@ -378,8 +379,9 @@
 						</div>
 					</div>
 					
-					<div>
-						<input type="submit" value="Cập nhật">
+					<div class="right-w3l" id = pro-Button>
+						<button type="button" id = profileButton class="btn btn-primary btn-lg btn-block" onclick="profile()"> Cập nhật </button>
+						<!-- <input type="submit" id = registerButton class="form-control" value="Đăng ký"> -->
 					</div>
 				</div>
 			</form>
