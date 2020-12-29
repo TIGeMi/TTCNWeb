@@ -332,38 +332,52 @@
 				
 			</div>
 			<!-- form -->
-			<form action="#" method="post">
+			<form action="#" method="post" id="profile_form">
 				<div class="contact-grids1 w3agile-6">
 					<div class="row">
 						<div class="col-md-12 col-sm-6 contact-form1 form-group">
 							<label class="col-form-label">Tên </label>
-							<input type="text" class="form-control" name="Name" placeholder="" required="">
+							<input type="text" class="form-control" id = "pro-name" name= "pro-name" placeholder="" required="">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-6 contact-form1 form-group">
 							<label class="col-form-label">E-mail</label>
-							<input type="text" class="form-control" name="Name" placeholder="" required="">
+							<input type="text" class="form-control" id = "pro-e" name= "pro-e" placeholder="" required="">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-6 contact-form1 form-group">
-							<label class="col-form-label">Mật khảu cũ</label>
-							<input type="email" class="form-control" name="Email" placeholder="" required="">
+							<label class="col-form-label">Địa chỉ </label>
+							<input type="text" class="form-control" id = "pro-add" name= "pro-add" placeholder="" required="">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-6 contact-form1 form-group">
-							<label class="col-form-label">Mật khẩu mới</label>
-							<input type="email" class="form-control" name="Email" placeholder="" required="">
+							<label class="col-form-label">Số điện thoại </label>
+							<input type="text" class="form-control" id = "pro-numner" name= "pro-number" placeholder="" required="">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12 col-sm-6 contact-form1 form-group">
-							<label class="col-form-label">Xác nhận mật khẩu mới</label>
-							<input type="email" class="form-control" name="Email" placeholder="" required="">
+							<label class="col-form-label">Mật khẩu cũ </label>
+							<input type="text" class="form-control" id = "pro-oldpas" name= "pro-oldpas" placeholder="" required="">
 						</div>
 					</div>
+					<div class="row">
+						<div class="col-md-12 col-sm-6 contact-form1 form-group">
+							<label class="col-form-label">Mật khẩu mới </label>
+							<input type="text" class="form-control" id = "pro-newpas" name= "pro-newpas" placeholder="" required="">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 col-sm-6 contact-form1 form-group">
+							<label class="col-form-label">Xác nhận mật khẩu mới </label>
+							<input type="text" class="form-control" id = "pro-repas" name= "pro-repas" placeholder="" required="">
+							<p id="pro-password-check">  </p>
+						</div>
+					</div>
+					
 					<div>
 						<input type="submit" value="Cập nhật">
 					</div>
@@ -638,6 +652,48 @@
 	<script src="js/bootstrap.js"></script>
 	<!-- //for bootstrap working -->
 	<!-- //js-files -->
+	<script type="text/javascript">
+        
+        
+        function profile() {
+            console.log("nhap profile")
+            var forms = document.forms["profile_form"]
+            if(forms.checkValidity()) {
+                var Name = $("#pro-name").val();
+				var Email = $("#pro-e").val();
+				var Address = $("#pro-add").val();
+				var Number = $("#pro-number").val();
+                var oldPassword = $("#pro-oldpas").val();
+				var newPassword = $("#pro-newpas").val();
+				var rePassword = $("#pro-repas").val();
+                if(newPassword != rePassword) {
+                    document.getElementById("pro-password-check").innerHTML = "Mật khẩu không khớp";
+                } else if (newPassword.length <8) {
+                    document.getElementById("pro-password-check").innerHTML = "Mật khẩu dài tối thiểu 8 kí tự";
+                } else {
+                    $.ajax({
+                    url: '/profile',
+                    type: 'POST',
+                    cache: false,
+                    data: { Name, Email, Address, Number, oldPassword, newPassword, rePassword},
+                    success: function (data) {
+                        console.log(data);
+                        if(data.profileState == true) {
+                            alert("Cập nhật thông tin thành công")
+                            location.reload();
+                        } else {
+                            alert("Cập nhật thông tin thành công")
+                        }
+                    }
+                    , error: function (jqXHR, textStatus, err) {
+                        alert('Lỗi ' + textStatus + ', lỗi ' + err)
+                    }
+                    })
+                }
+            } else alert("Vui lòng điền đầy đủ các trường")  
+        }
+                      
+    </script>
 
 </body>
 
