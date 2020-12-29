@@ -1,6 +1,6 @@
 *{margin: 0; padding: 0;}
-body{
-    counter-reset: first;
+body {
+    counter-reset: second;
 }
 .below-slogan {
     min-height: 55px;
