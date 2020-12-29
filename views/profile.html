@@ -49,26 +49,148 @@
 				</div>
 				<div class="col-lg-4 header-right ">
 					<!-- header lists -->
+                    <% if(session_user.role == 0) { %>
+                        <ul>
+                            <li>
+                                <a class="btn btn-danger" href="add-product"> Đăng sản phẩm</a>						
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle col-2" href="#" role="button" >
+                                    <span><img src="images/man.png" class="rounded-circle" alt="" width="30" height="30"></span>
+                                </a>
+                                <div class="dropdown-menu">
+                                    Xin chào: <span style="color:rgb(255,0,0)"><%=session_user.name%></span>
+                                    <a class="dropdown-item" href="profile">Thông tin cá nhân</a>
+                                    <a class="dropdown-item" href="my-order">Quản lý đơn hàng</a>
+                                    <a class="dropdown-item" href="logout">Đăng xuất</a>
+                                </div>
+                            </li>
+                        </ul>
+
+                    <% } else if(session_user.role == 1) { %>
+                        <ul>
+                            <li>
+                                <a class="btn btn-danger" href="add-product"> Đăng sản phẩm</a>							
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle col-2" href="#" role="button" >
+                                    <span><img src="images/man.png" class="rounded-circle" alt="" width="30" height="30"></span>
+                                </a>
+                                <div class="dropdown-menu">
+                                    Xin chào: <span style="color:rgb(255,0,0)"><%=session_user.name%></span>
+                                    <a class="dropdown-item" href="profile">Thông tin cá nhân</a>
+                                    <a class="dropdown-item" href="manage-product">Quản lý mặt hàng</a>
+                                    <a class="dropdown-item" href="manage-order">Quản lý đơn hàng</a>
+                                    <a class="dropdown-item" href="logout">Đăng xuất</a>
+                                </div>
+                            </li>
+                        </ul>
+                    <% } else if(session_user.role == 2) { %> 
+                        <ul>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle col-2" href="#" role="button" >
+                                    <span><img src="images/man.png" class="rounded-circle" alt="" width="30" height="30"></span>
+                                </a>
+                                <div class="dropdown-menu">
+                                    Xin chào: <span style="color:rgb(255,0,0)"><%=session_user.name%></span>
+                                    <a class="dropdown-item" href="admin/manage-user">Quản lý người bán</a>
+                                    <a class="dropdown-item" href="admin/manage-product">Quản lý sản phẩm</a>
+                                    <a class="dropdown-item" href="logout">Đăng xuất</a>
+                                </div>
+                            </li>
+                        </ul>
+                    <% } else { %>   
 					<ul>
-						<li>
-							<button class="btn btn-danger" type="submit">Đăng tin</button>						
+						<li class="text-center border-right text-white">
+							<a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
+								<i class="fas fa-sign-in-alt mr-2"></i> Đăng nhập </a>
 						</li>
-						<li class="dropdown">
-							<a class="dropdown-toggle col-2" href="#" role="button" >
-								<span><img src="images/man.png" class="rounded-circle" alt="" width="30" height="30"></span>
-							</a>
-							<div class="dropdown-menu">
-								Tài khoản: <span style="color:rgb(255,0,0)">Đào Thanh</span>
-								<a class="dropdown-item" href="#">Thông tin cá nhân</a>
-								<a class="dropdown-item" href="index.html">Đăng xuất</a>
-							</div>
+						<li class="text-center text-white">
+							<a href="#" data-toggle="modal" data-target="#exampleModal2" class="text-white">
+								<i class="fas fa-sign-out-alt mr-2"></i>Đăng ký</a>
 						</li>
-					</ul>
+                    </ul>
+                    <% } %>
+					<!-- //header lists -->
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- //top-header -->
+	<!-- modals -->
+	<!-- log in -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title text-center">Đăng nhập</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form id="login-form">
+						<div class="form-group">
+							<label class="col-form-label">Email</label>
+							<input type="text" class="form-control" placeholder=" " id = "log-email" name= "log-email" required="">
+						</div>
+						<div class="form-group">
+							<label class="col-form-label">Mật khẩu</label>
+							<input type="password" class="form-control" placeholder=" " id = "log-password" name="log-password" required="">
+						</div>
+						<div class="">
+                            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="login()"> Đăng nhập </button>
+                        </div>
+                        <p id="login-state">  </p>
+						<p class="text-center dont-do mt-3">Bạn chưa có tài khoản?
+							<a href="#" data-toggle="modal" data-target="#exampleModal2">
+								Đăng ký ngay!</a>
+						</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- register -->
+	<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Đăng ký</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form name= register-form method=post action="#">
+						<div class="form-group">
+							<label class="col-form-label">Tên</label>
+							<input type="text" class="form-control" id = "reg-name" name= "reg-name" required>
+						</div>
+						<div class="form-group" id="emailERR">
+							<label class="col-form-label">Email</label>
+							<input type="email" class="form-control" id = "reg-email" name= "reg-email" required onchange="checkEmail()">
+							<p id="err"></p>
+						</div>
+						<div class="form-group">
+							<label class="col-form-label">Mật khẩu</label>
+							<input type="password" class="form-control" id="reg-password" name="reg-password"required>
+						</div>
+						<div class="form-group">
+							<label class="col-form-label">Xác nhận mật khẩu</label>
+							<input type="password" class="form-control" placeholder=" " name="reg-password2" id="reg-password2" required>
+                            <p id="reg-password-check">  </p>
+                        </div>
+						<div class="right-w3l" id = Button>
+                            <button type="button" id = registerButton class="btn btn-primary btn-lg btn-block" onclick="register()"> Đăng ký </button>
+							<!-- <input type="submit" id = registerButton class="form-control" value="Đăng ký"> -->
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //modal -->
 
 	<!-- header-bottom-->
 	<div class="header-bot">
@@ -97,14 +219,35 @@
 						<!-- cart details -->
 						<div class="">
 							<div class="">
-								<form action="checkout.html" method="post" >
-									
-									<button class="btn w3view-cart" type="submit" name="submit" value="">
+								<form action="" method="post" >
+									<button class="btn w3view-cart" type="button" name="submit" value="" onclick="CartAccess()">
 										<i class="fas fa-cart-arrow-down"></i>
 									</button>
 								</form>
 							</div>
-						</div>
+                        </div>
+                        <script type="text/javascript">
+                            function CartAccess() {
+                                console.log("vao ham cartaccess")
+                                $.ajax({
+                                url: '/checkout',
+                                type: 'POST',
+                                cache: false,
+                                data: {},
+                                success: function (data) {
+                                    console.log("data", data);
+                                    if(data.accessCart == false) {
+                                        alert("Bạn phải đăng nhập để sử dụng chức năng giỏ hàng")
+                                    } else {
+                                        window.location.replace(data.url)
+                                    }
+                                }
+                                , error: function (jqXHR, textStatus, err) {
+                                    alert('text status ' + textStatus + ', Loi roi ' + err)
+                                }
+                                })
+                            }           
+                        </script>
 						<!-- //cart details -->
 					</div>
 				</div>
