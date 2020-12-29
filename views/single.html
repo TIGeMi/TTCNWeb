@@ -278,7 +278,7 @@
 				</div>
 				<form action="#" name="f1" method="POST">
 				<div class="col-lg-7 single-right-left simpleCart_shelfItem">
-					<div hidden="hidden" id="product_id">2</div>
+					<div hidden="hidden" id="product_id">1</div>
 					<h3 class="mb-3">Samsung Galaxy J7 Prime (Gold, 16 GB) (3 GB RAM)</h3>
 					<h3 class="mb-1">Được bán bởi <a href= "#">SamSung Official Store</a></h3>
 					<p class="mb-3">
@@ -677,7 +677,8 @@
         var product_id = document.getElementById("product_id").innerHTML;
         var quantity_of_cart_item = document.getElementById("quantity").innerHTML;
         var cart_id = $("#cart_id").val();
-       	alert(quantity_of_cart_item);
+		   alert(product_id);
+		   alert(quantity_of_cart_item);
         $.ajax({
         url: '/addCartItem',
         type: 'POST',
@@ -686,9 +687,10 @@
         success: function (data) {
             window.location.href = "/checkout"
         }
-        , error: function (jqXHR, textStatus, err) {
-            alert('text status ' + textStatus + ', err ' + err)
-        }
+		, 
+		error: function (e) {
+                        console.log(e.message);
+                    }
         })
     }
                   
