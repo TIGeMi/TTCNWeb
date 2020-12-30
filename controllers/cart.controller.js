@@ -19,7 +19,13 @@ const registerCart = (req, res) => {
     }  
 };
 
-
+const accessCart = (req, res) => {
+    if(req.session.user != null) { 
+        res.send({accessCart : true, url: "checkout"})
+    }
+    else res.send({accessCart: false})
+}
 export default {
     registerCart,
+    accessCart
 };

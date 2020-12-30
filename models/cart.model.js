@@ -31,7 +31,7 @@ Cart.prototype = {
     },
 
     create : (cart_id, user_id, result) => {      
-        conn.query("INSERT INTO carts(cart_id, user_id) VALUES (?, ?, ?)", [cart_id, user_id], (err, res) => {
+        conn.query("INSERT INTO carts(cart_id, user_id) VALUES (?, ?)", [cart_id, user_id], (err, res) => {
             if (err) {
                 console.log("error: ", err);
                 result(null, err);
@@ -40,24 +40,7 @@ Cart.prototype = {
             result(null, true)
         });
     },
-    filler : (role, result) => {
-        let isSupplier = -1;
-        if(role == "customer") isSupplier = 0;
-        else if(role == "supplier") isSupplier = 1;
-        conn.query("SELECT * FROM users WHERE is_supplier = ?", [isSupplier], (err, res) => {
-            if(err) {
-                console.log("error: ", err);
-                result(null, err);
-                return;
-            }
-            if (res.length) {
-                console.log("found users : ", res);
-                result(null, res);
-                return;
-            }
-            result({ kind: "not_found" }, null);
-            });
-    }
+    
 }
 
 export default Cart;

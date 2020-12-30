@@ -52,7 +52,7 @@
                     <% if(session_user.role == 0) { %>
                         <ul>
                             <li>
-                                <a class="btn btn-danger" href="add-product"> Đăng sản phẩm</a>						
+                                <a class="btn btn-danger" href="add-product"> Đăng tin</a>						
                             </li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle col-2" href="#" role="button" >
@@ -70,7 +70,7 @@
                     <% } else if(session_user.role == 1) { %>
                         <ul>
                             <li>
-                                <a class="btn btn-danger" href="add-product"> Đăng sản phẩm</a>							
+                                <a class="btn btn-danger" href="add-product"> Đăng tin</a>							
                             </li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle col-2" href="#" role="button" >
@@ -329,7 +329,7 @@
 			<!-- //tittle heading -->
 			<div class="checkout-right">
 				<h4 class="mb-sm-4 mb-3">Giỏ hàng của bạn gồm:
-					<span id="sl">3</span> Sản phẩm
+					<span id="sl"> <%= listCartItems.length %> </span> Sản phẩm
 				</h4>
 				<div class="table-responsive">
 					<table class="timetable_sub">
@@ -345,10 +345,11 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="rem1">
-								<td class="invert">1</td>
+                            <% for(i=0;i<listCartItems.length;i++) { %>
+							<tr class="rem" id = "row<%=i%>">
+								<td class="invert"> <%=i+1%></td>
 								<td class="invert-image">
-									<input type="checkbox"class="checkmoney" name="sanpham" value="sanpham_id" onclick="tinhtien(0)">
+                                    <input type="checkbox"class="checkmoney" name="sanpham" id = "checkbox<%=cartItemData[i].cart_item_id %>" value="sanpham_id" onclick="tinhtien( <%=i%> )">
 									<a href="single.html">
 										<img src="images/a.jpg" alt=" " class="img-responsive">
 									</a>
@@ -356,102 +357,121 @@
 								<td class="invert">
 									<div class="quantity">
 										<div class="quantity-select">
-											<div class="entry value-minus">&nbsp;</div>
-											<div class="entry value">
-												1
-											</div>
-											<div class="entry value-plus active">&nbsp;</div>
+											<button type = button class="entry value-minus active" onclick="decrease(<%=cartItemData[i].cart_item_id %>)">&nbsp;</button>
+											<p id = "quantity<%=cartItemData[i].cart_item_id %>" class="entry value">
+												<%=cartItemData[i].cart_item_quantity  %>
+											</p>
+											<button type = button class="entry value-plus active" onclick="increase(<%=cartItemData[i].cart_item_id %>)">&nbsp;</button>
 										</div>
 									</div>
-								</td>
-								<td class="invert">Back Cover</td>
-								<td class="invert">Đào Thanh</td>
+                                </td>
+                                
+								<td class="invert"><%= listCartItems[i].product_name %></td>
+								<td class="invert"><%= listCartItems[i].supplier_id %></td>
 								<td class="invert">
 									<span class="tiensp">
-										100000
+										<%= listCartItems[i].sale_price %>
 									</span> vnđ
 								</td>
 								<td class="invert">
 									<div class="rem">
-										<div class="close1"> </div>
+										<button class="close1" onclick="removeItem(<%=cartItemData[i].cart_item_id %>, <%=i%>)"> </button>
 									</div>
-								</td>
-							</tr>
-							<tr class="rem2">
-								<td class="invert">2</td>
-								<td class="invert-image">
-									<input type="checkbox" name="sanpham" value="sanpham_id" onclick="tinhtien(1)">
-									<a href="single2.html">
-										<img src="images/a4.jpg" alt=" " class="img-responsive">
-									</a>
-								</td>
-								<td class="invert">
-									<div class="quantity">
-										<div class="quantity-select">
-											<div class="entry value-minus">&nbsp;</div>
-											<div class="entry value">
-												1
-											</div>
-											<div class="entry value-plus active">&nbsp;</div>
-										</div>
-									</div>
-								</td>
-								<td class="invert">Cordless Trimmer</td>
-								<td class="invert">Đào Thanhxxx</td>
-								<td class="invert">
-									<span class ="tiensp">
-										200000
-									</span> vnđ
-								</td>
-								<td class="invert">
-									<div class="rem">
-										<div class="close2"> </div>
-									</div>
-								</td>
-							</tr>
-							<tr class="rem3">
-								<td class="invert">3</td>
-								<td class="invert-image">
-									<input type="checkbox" name="sanpham" value="sanpham_id" onclick="tinhtien(2)">
-									<a href="single.html">
-										<img src="images/a3.jpg" alt=" " class="img-responsive">
-									</a>
-								</td>
-								<td class="invert">
-									<div class="quantity">
-										<div class="quantity-select">
-											<div class="entry value-minus">&nbsp;</div>
-											<div class="entry value">
-												1
-											</div>
-											<div class="entry value-plus active">&nbsp;</div>
-										</div>
-									</div>
-								</td>
-								<td class="invert">Nikon Camera</td>
-								<td class="invert">Đào Thanhyyy</td>
-								<td class="invert">
-									<span class ="tiensp">
-										300000
-									</span> vnđ
-								</td>
-								<td class="invert">
-									<div class="rem">
-										<div class="close3"> </div>
-									</div>
-								</td>
-							</tr>
+                                </td> 
+                            </tr>
+                            <% } %>
 						</tbody>
 					</table>
-				</div>
+                </div>
+                <script>
+                    function removeItem (cart_item_id, i) {
+                        $.ajax({
+                        url: '/removeCartItem',
+                        type: 'POST',
+                        cache: false,
+                        data: {cart_item_id},
+                        success: function (data) {
+                            console.log("co vao day")
+                            var child = document.getElementById("row"+i.toString());
+                            child.remove()
+                            let num = parseInt(document.getElementById("sl").innerHTML, 10);
+                            document.getElementById("sl").innerHTML = num - 1
+                        }
+                        , error: function (jqXHR, textStatus, err) {
+                            alert('text status ' + textStatus + ', err ' + err)
+                        }
+                        })
+                    }
+                </script>
+                <script>
+                    function increase(cart_item_id) {
+                        console.log(cart_item_id)
+                        $.ajax({
+                            url: '/updateCartItemQuantity',
+                            type: 'POST',
+                            cache: false,
+                            data: { diff: 1, cart_item_id},
+                            success: function (data) {
+                                let num = parseInt(document.getElementById("quantity"+cart_item_id).innerHTML, 10);
+                                document.getElementById("quantity"+cart_item_id).innerHTML = num + 1
+                            }
+                            , error: function (jqXHR, textStatus, err) {
+                                alert('text status ' + textStatus + ', err ' + err)
+                            }
+                        })
+                    }
+                    function decrease(cart_item_id) {
+                        if(parseInt(document.getElementById("quantity"+cart_item_id).innerHTML, 10)<=1) {} else {
+                            console.log(cart_item_id)
+                            $.ajax({
+                            url: '/updateCartItemQuantity',
+                            type: 'POST',
+                            cache: false,
+                            data: { diff: -1, cart_item_id},
+                            success: function (data) {
+                                let num = parseInt(document.getElementById("quantity"+cart_item_id).innerHTML, 10);
+                                document.getElementById("quantity"+cart_item_id).innerHTML = num - 1
+                            }
+                            , error: function (jqXHR, textStatus, err) {
+                                alert('text status ' + textStatus + ', err ' + err)
+                            }
+                        })
+                        }
+                            
+                    }
+                </script>
+                
 				<h4 class="mb-sm-4 mb-3">Tổng số tiền:
 					
 						<span id="money">0</span> vnđ
 				</h4>
-				<a href="payment.html"><button class="btn btn-danger" type="button">Mua ngay</button></a>
+                    <button class="btn btn-danger" type="button" onclick="payment()">Mua ngay</button>
 			</div>
 		</div>
-	</div>
+    </div>
+    <script>
+        function payment() {
+            let order_item_id = []
+            var checkbox = document.getElementsByName('sanpham');
+            for(let i=0;i< <%=listCartItems.length%>;i++) {
+                if(checkbox[i].checked) {
+                    order_item_id.push(parseInt(checkbox[i].id.slice(8),10)) 
+                }
+            }
+            console.log(order_item_id)
+            $.ajax({
+            url: '/createOrder',
+            type: 'POST',
+            cache: false,
+            data: {order_item_id },
+            success: function (data) {
+                
+            }
+            , error: function (jqXHR, textStatus, err) {
+                alert('text status ' + textStatus + ', err ' + err)
+            }  
+        }
+    </script>
 	<!-- //checkout page -->
 
 	<!-- footer -->
@@ -675,21 +695,49 @@
 	<!-- //password-script -->
 
 	<!-- quantity -->
-	<script>
+	<!-- <script>
 		$('.value-plus').on('click', function () {
 			var divUpd = $(this).parent().find('.value'),
-				newVal = parseInt(divUpd.text(), 10) + 1;
-			divUpd.text(newVal);
+                newVal = parseInt(divUpd.text(), 10) + 1;
+            var divTest= $(this).parent().find('.cart_item_id'),
+                cart_item_id = parseInt(divTest.text(), 10);
+            divUpd.text(newVal);
+            $.ajax({
+                url: '/updateCartItemQuantity',
+                type: 'POST',
+                cache: false,
+                data: { diff: 1, cart_item_id : i },
+                success: function (data) {
+
+                }
+                , error: function (jqXHR, textStatus, err) {
+                    alert('text status ' + textStatus + ', err ' + err)
+                }
+            })
+            
 		});
 
 		$('.value-minus').on('click', function () {
 			var divUpd = $(this).parent().find('.value'),
 				newVal = parseInt(divUpd.text(), 10) - 1;
-			if (newVal >= 1) divUpd.text(newVal);
+            if (newVal >= 1) divUpd.text(newVal);
+            console.log("giam so luong")
+            $.ajax({
+                url: '/updateCartItemQuantity',
+                type: 'POST',
+                cache: false,
+                data: { diff: -1, cart_item_id : i },
+                success: function (data) {
+                    
+                }
+                , error: function (jqXHR, textStatus, err) {
+                    alert('text status ' + textStatus + ', err ' + err)
+                }
+            })
 		});
-	</script>
+	</script> -->
 	<!--quantity-->
-	<script>
+	<!-- <script>
 		$(document).ready(function (c) {
 			$('.close1').on('click', function (c) {
 				$('.rem1').fadeOut('slow', function (c) {
@@ -715,7 +763,7 @@
 				});
 			});
 		});
-	</script>
+	</script> -->
 	<!-- //quantity -->
 
 	<!-- smoothscroll -->
@@ -780,106 +828,6 @@
 	  	 	}
       	 document.getElementById("money").innerHTML = money;
       }
-	</script>
-	<script type="text/javascript">
-        function emailERR(msg) {
-            var child = document.getElementById("err");
-            child.remove()
-
-            err = document.createElement("p");
-            err.setAttribute("id", "err")
-            var node = document.createTextNode(msg);
-            err.appendChild(node);
-            var element = document.getElementById("emailERR");
-            element.appendChild(err);
-        }
-        function checkEmail() {
-            var email = $("#reg-email").val();
-            console.log(email)
-            $.ajax({
-                url: '/checkEmail',
-                type: 'POST',
-                cache: false,
-                data: { email: email },
-                success: function (data) {
-                    if (data.duplicate) {
-                        console.log("ket qua:", data.duplicate)
-                        emailERR("Email đã tồn tại")
-                        document.getElementById("registerButton").disabled = true;
-                        document.getElementById("Button").style.backgroundColor = "red";
-                    }
-                    else {
-                        emailERR("Email hợp lệ");
-                        document.getElementById("registerButton").disabled = false;
-                    }
-                }
-                , error: function (jqXHR, textStatus, err) {
-                    alert('text status ' + textStatus + ', err ' + err)
-                }
-            })
-        }
-        
-        function login() {
-            console.log("vao ham login")
-            var forms = document.forms["login-form"]
-            if(forms.checkValidity()) {
-                var Email = $("#log-email").val();
-                var Password = $("#log-password").val();
-                $.ajax({
-                url: '/login',
-                type: 'POST',
-                cache: false,
-                data: { Email, Password },
-                success: function (data) {
-                    console.log(data);
-                    if(data.loginState == false) {
-                        console.log("dang nhap that bai")
-                        document.getElementById("login-state").innerHTML = "Email hoặc mật khẩu không đúng";
-                    } else {
-                        window.location.replace(data.url)
-                    }
-                }
-                , error: function (jqXHR, textStatus, err) {
-                    alert('text status ' + textStatus + ', err ' + err)
-                }
-                })
-            } else alert("Vui lòng điền đầy đủ các trường")  
-        }
-        function register() {
-            console.log("vao ham register")
-            var forms = document.forms["register-form"]
-            if(forms.checkValidity()) {
-                var Name = $("#reg-name").val();
-                var Email = $("#reg-email").val();
-                var Password = $("#reg-password").val();
-                var Password2 = $("#reg-password2").val();
-                if(Password != Password2) {
-                    document.getElementById("reg-password-check").innerHTML = "Mật khẩu không khớp";
-                } else if (Password.length <8) {
-                    document.getElementById("reg-password-check").innerHTML = "Mật khẩu dài tối thiểu 8 kí tự";
-                } else {
-                    $.ajax({
-                    url: '/register',
-                    type: 'POST',
-                    cache: false,
-                    data: { Email, Password, Name},
-                    success: function (data) {
-                        console.log(data);
-                        if(data.registerState == true) {
-                            alert("Đăng ký thành công")
-                            location.reload();
-                        } else {
-                            alert("Đăng ký không thành công")
-                        }
-                    }
-                    , error: function (jqXHR, textStatus, err) {
-                        alert('text status ' + textStatus + ', err ' + err)
-                    }
-                    })
-                }
-            } else alert("Vui lòng điền đầy đủ các trường")  
-        }
-                      
     </script>
 </body>
 

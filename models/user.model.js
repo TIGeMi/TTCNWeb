@@ -4,17 +4,6 @@ import bcrypt from 'bcrypt';
 // const User = () => {};
 function User() {};
 User.prototype = {
-    checkLogin : (email, password, result) => {
-        find(email, (data) => {
-            if(data) {
-                if(bcrypt.compareSync(password, data.password)) {
-                    result(null, res);
-                    return;
-                } 
-            }
-            else result(null, null);
-        })
-    },
     find : (email, result) => {
         console.log("dang find")
         conn.query("SELECT * FROM users WHERE email = ?", [email], (err, res) => {
@@ -29,6 +18,29 @@ User.prototype = {
             else result(null, null)
           });
     },
+    checkLogin : (email, password, result) => {
+        conn.query("SELECT * FROM users WHERE email = ?", [email], (err, res) => {
+            if (err) {
+              console.log("error: ", err);
+              result(null, err);
+              return;
+            }
+            if(res.length) {
+                console.log("co email nay")
+                let data = res[0]
+                if(bcrypt.compareSync(password, data.password)) {
+                    console.log("dung pass")
+                    console.log(data)
+                    result(null, data);
+                } 
+                else {
+                    console.log("sai pass")
+                    result(null,false)
+                };
+            }
+            else result(null, false)
+        });
+    },
 
     create : (email, password, name, result) => {
         password = bcrypt.hashSync(password,10);       
@@ -41,11 +53,26 @@ User.prototype = {
             result(null, res)
         });
     },
+    update : (user_info, result) => {
+        let newPassword = bcrypt.hashSync(user_info[0],10);
+        user_info[0] = newPassword
+        conn.query("UPDATE users SET password = ?, name = ?, address = ?, phone = ?  WHERE id = ?", 
+        user_info, (err, res) => {
+        if (err) {
+            console.log("error: ", err);
+            result(null, false);
+            return;
+        }
+        console.log("res", res)
+        console.log(res.affectedRows)
+        result(null, res.affectedRows)
+        })
+    },
     filler : (role, result) => {
-        let isSupplier = -1;
-        if(role == "customer") isSupplier = 0;
-        else if(role == "supplier") isSupplier = 1;
-        conn.query("SELECT * FROM users WHERE is_supplier = ?", [isSupplier], (err, res) => {
+        let role_id = -1;
+        if(role == "customer") role_id = 0;
+        else if(role == "supplier") role_id = 1;
+        conn.query("SELECT * FROM users WHERE role = ?", [role_id], (err, res) => {
             if(err) {
                 console.log("error: ", err);
                 result(null, err);
@@ -58,6 +85,16 @@ User.prototype = {
             }
             result({ kind: "not_found" }, null);
             });
+    },
+    setSupplier : (user_id, result) => {
+        conn.query("UPDATE users SET role = 1 WHERE id = ? ", [user_id], (err, res) => {
+            if(err) {
+                console.log("error: ", err);
+                result(null, err);
+                return
+            }
+            result(null, true)
+        })
     }
 }
 
