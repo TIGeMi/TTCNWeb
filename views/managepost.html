@@ -746,7 +746,106 @@
 		});
 	</script>
 	<!-- //smooth-scrolling-of-move-up -->
+	<script type="text/javascript">
+        function emailERR(msg) {
+            var child = document.getElementById("err");
+            child.remove()
 
+            err = document.createElement("p");
+            err.setAttribute("id", "err")
+            var node = document.createTextNode(msg);
+            err.appendChild(node);
+            var element = document.getElementById("emailERR");
+            element.appendChild(err);
+        }
+        function checkEmail() {
+            var email = $("#reg-email").val();
+            console.log(email)
+            $.ajax({
+                url: '/checkEmail',
+                type: 'POST',
+                cache: false,
+                data: { email: email },
+                success: function (data) {
+                    if (data.duplicate) {
+                        console.log("ket qua:", data.duplicate)
+                        emailERR("Email đã tồn tại")
+                        document.getElementById("registerButton").disabled = true;
+                        document.getElementById("Button").style.backgroundColor = "red";
+                    }
+                    else {
+                        emailERR("Email hợp lệ");
+                        document.getElementById("registerButton").disabled = false;
+                    }
+                }
+                , error: function (jqXHR, textStatus, err) {
+                    alert('text status ' + textStatus + ', err ' + err)
+                }
+            })
+        }
+        
+        function login() {
+            console.log("vao ham login")
+            var forms = document.forms["login-form"]
+            if(forms.checkValidity()) {
+                var Email = $("#log-email").val();
+                var Password = $("#log-password").val();
+                $.ajax({
+                url: '/login',
+                type: 'POST',
+                cache: false,
+                data: { Email, Password },
+                success: function (data) {
+                    console.log(data);
+                    if(data.loginState == false) {
+                        console.log("dang nhap that bai")
+                        document.getElementById("login-state").innerHTML = "Email hoặc mật khẩu không đúng";
+                    } else {
+                        window.location.replace(data.url)
+                    }
+                }
+                , error: function (jqXHR, textStatus, err) {
+                    alert('text status ' + textStatus + ', err ' + err)
+                }
+                })
+            } else alert("Vui lòng điền đầy đủ các trường")  
+        }
+        function register() {
+            console.log("vao ham register")
+            var forms = document.forms["register-form"]
+            if(forms.checkValidity()) {
+                var Name = $("#reg-name").val();
+                var Email = $("#reg-email").val();
+                var Password = $("#reg-password").val();
+                var Password2 = $("#reg-password2").val();
+                if(Password != Password2) {
+                    document.getElementById("reg-password-check").innerHTML = "Mật khẩu không khớp";
+                } else if (Password.length <8) {
+                    document.getElementById("reg-password-check").innerHTML = "Mật khẩu dài tối thiểu 8 kí tự";
+                } else {
+                    $.ajax({
+                    url: '/register',
+                    type: 'POST',
+                    cache: false,
+                    data: { Email, Password, Name},
+                    success: function (data) {
+                        console.log(data);
+                        if(data.registerState == true) {
+                            alert("Đăng ký thành công")
+                            location.reload();
+                        } else {
+                            alert("Đăng ký không thành công")
+                        }
+                    }
+                    , error: function (jqXHR, textStatus, err) {
+                        alert('text status ' + textStatus + ', err ' + err)
+                    }
+                    })
+                }
+            } else alert("Vui lòng điền đầy đủ các trường")  
+        }
+                      
+    </script>
 	<!-- for bootstrap working -->
 	<script src="js/bootstrap.js"></script>
 	<!-- //for bootstrap working -->

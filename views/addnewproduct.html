@@ -337,7 +337,7 @@
 
 						<div>
 							
-							<form action="#" method="post" class="creditly-card-form agileinfo_form">
+							<form action="#" method="post" class="creditly-card-form agileinfo_form" id="add_form">
 								<div class="creditly-wrapper wthree, w3_agileits_wrapper">
 									<div class="credit-card-wrapper">
 										<div class="first-row form-group">
@@ -345,34 +345,39 @@
 										
 											<div class="section_room_pay">
 												<label class="control-label">Danh mục sản phẩm</label>
-												<select class="year">
-													<option value="Dienthoai">Điện thoại</option>
-													<option value="Maytinh">Máy tính</option>
-													<option value="Phukien">Phụ kiện</option>
-													<option value="Mayanh">Máy ảnh</option>			
+												<select class="year" id="product">
+													<option value="Dienthoai" >Điện thoại</option>
+													<option value="Maytinh" >Máy tính</option>
+													<option value="Phukien" >Phụ kiện</option>
+													<option value="Mayanh" >Máy ảnh</option>			
 												</select>
 											</div>
 											<br>
 											<div class="controls">
 												<label class="control-label">Tên sản phẩm</label>
-												<input class="billing-address-name form-control" type="text" name="name" >
+												<input class="billing-address-name form-control" type="text" id="add-name" name="name" >
+											</div>
+											<br>
+											<div class="controls">
+												<label class="control-label">Số lượng</label>
+												<input class="billing-address-name form-control" type="text" id="add-amount" name="name" >
 											</div>
 											<div class="w3_agileits_card_number_grids my-3">
 												<div class="w3_agileits_card_number_grid_left">
 													<div class="controls">
 														<label class="control-label">Giá gốc</label>
-														<input class="billing-address-name form-control" type="text" name="price" >
+														<input class="billing-address-name form-control" id="add-price" type="text" name="price" >
 													</div>
 													<br>
 													<div class="controls">
 														<label class="control-label">Giá khuyến mãi</label>
-														<input class="billing-address-name form-control" type="text" name="disprice" >
+														<input class="billing-address-name form-control" id="add-disprice" type="text" name="disprice" >
 													</div>
 												</div>
 												<div class="w3_agileits_card_number_grid_right mt-2">
 													<div class="controls">
 														<label class="control-label">Mô tả sản phẩm</label>
-														<textarea class="form-control" type="textarea" name="detail" value="xxx" ></textarea>
+														<textarea class="form-control" type="textarea" id="add-detail" name="detail" value="xxx" ></textarea>
 													</div>
 												</div>
 												
@@ -414,9 +419,11 @@
 												</script>
 											</div>
 										</div>
-										<button class="submit mt-3">
-											<span>Đăng tin</span>
-										</button>
+										<br>
+										<div class="right-w3l" id = add-Button>
+											<button type="button" id = addButton class="btn btn-primary btn-lg btn-block" onclick="add()"> Đăng tin </button>
+											<!-- <input type="submit" id = registerButton class="form-control" value="Đăng ký"> -->
+										</div>
 									</div>
 								</div>
 							</form>
@@ -795,7 +802,39 @@
                     alert('text status ' + textStatus + ', err ' + err)
                 }
             })
-        }
+		}
+		function add() {
+            console.log("them sp")
+            var forms = document.forms["add_form"]
+            if(forms.checkValidity()) {
+                var e = document.getElementById("product");
+				var strUser = e.options[e.selectedIndex].text;	
+				var Name = $("#add-name").val();
+				var Soluong  = $("#add-amount").val();
+				var Price = $("#add-price").val();
+				var discountPri= $("#add-disprice").val();
+				var Detail= $("#add-detail").val();
+                $.ajax({
+                    url: '/add',
+                    type: 'POST',
+                    cache: false,
+                    data: { strUser, Name, Soluong, Price, discountPri, Detail},
+                    success: function (data) {
+                        console.log(data);
+                        if(data.profileState == true) {
+                            alert("Cập nhật thông tin thành công")
+                            location.reload();
+                        } else {
+                            alert("Cập nhật thông tin thành công")
+                        }
+                    }
+                    , error: function (jqXHR, textStatus, err) {
+						alert(strUser)
+                        alert('Lỗi ' + textStatus + ', lỗi ' + err)
+                    }
+                    })
+            } else alert("Vui lòng điền đầy đủ các trường")  
+		}
         
         function login() {
             console.log("vao ham login")
