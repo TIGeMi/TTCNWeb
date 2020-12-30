@@ -5,6 +5,9 @@ import router from './routes/product.route.js';
 import session from 'express-session';
 import passport from 'passport';
 import bodyParser from 'body-parser'
+import cartRouter from './routes/cart.route.js';
+import userRouter from './routes/user.route.js'
+import orderRouter from './routes/order.route.js'
 const app = express();
 
 //ejs setting for html
@@ -27,7 +30,11 @@ app.use(session({
 }));
 
 app.use("/", router);
+app.use("/", cartRouter)
+app.use("/", userRouter)
+app.use("/", orderRouter)
 const port = 3000;
 app.listen(port, () => {
     console.log("node js is running")
 });
+// app.listen(port, "10.20.2.242")
