@@ -339,48 +339,57 @@
 
 						<div>
 							
-							<form action="#" method="post" class="creditly-card-form agileinfo_form">
+							<form action="#" method="post" class="creditly-card-form agileinfo_form" id="post_form">
 								<div class="creditly-wrapper wthree, w3_agileits_wrapper">
 									<div class="credit-card-wrapper">
 										<div class="first-row form-group">
 										</div>
 										
-											<div class="section_room_pay">
-												<label class="control-label">Danh mục sản phẩm</label>
-												<select class="year">
-													<option value="Dienthoai">Điện thoại</option>
-													<option value="Maytinh">Máy tính</option>
-													<option value="Phukien">Phụ kiện</option>
-													<option value="Mayanh">Máy ảnh</option>
-												</select>
-											</div>
-											<br>
-											<div class="controls">
-												<label class="control-label">Tên sản phẩm</label>
-												<input class="billing-address-name form-control" type="text" name="name" value="Samsung Galaxy J7">
-											</div>
-											<div class="w3_agileits_card_number_grids my-3">
-												<div class="w3_agileits_card_number_grid_left">
-													<div class="controls">
-														<label class="control-label">Giá gốc</label>
-														<input class="billing-address-name form-control" type="text" name="price" >
-													</div>
-													<br>
-													<div class="controls">
-														<label class="control-label">Giá khuyến mãi</label>
-														<input class="billing-address-name form-control" type="text" name="disprice" >
-													</div>
+										<div class="section_room_pay">
+											<label class="control-label">Danh mục sản phẩm</label>
+											<select class="year" id="product">
+												<option value="Dienthoai" >Điện thoại</option>
+												<option value="Maytinh" >Máy tính</option>
+												<option value="Phukien" >Phụ kiện</option>
+												<option value="Mayanh" >Máy ảnh</option>			
+											</select>
+										</div>
+										<br>
+										<div class="controls">
+											<label class="control-label">Tên sản phẩm</label>
+											<input class="billing-address-name form-control" type="text" id="post-name" name="name" >
+										</div>
+										<br>
+										<div class="controls">
+											<label class="control-label">Số lượng</label>
+											<input class="billing-address-name form-control" type="text" id="post-amount" name="name" >
+										</div>
+										<br>
+										<div class="controls">
+											<label class="control-label">Tên thương hiệu</label>
+											<input class="billing-address-name form-control" type="text" id="post-brand" name="name" >
+										</div>
+										<div class="w3_agileits_card_number_grids my-3">
+											<div class="w3_agileits_card_number_grid_left">
+												<div class="controls">
+													<label class="control-label">Giá gốc</label>
+													<input class="billing-address-name form-control" id="post-price" type="text" name="price" >
 												</div>
 												<br>
-												<div class="w3_agileits_card_number_grid_right mt-2">
-													<div class="controls">
-														<label class="control-label">Mô tả sản phẩm</label>
-														<textarea class="form-control" type="textarea" name="name" value="xxx" ></textarea>
-													</div>
+												<div class="controls">
+													<label class="control-label">Giá khuyến mãi</label>
+													<input class="billing-address-name form-control" id="post-disprice" type="text" name="disprice" >
 												</div>
-												
-												<div class="clear"> </div>
 											</div>
+											<div class="w3_agileits_card_number_grid_right mt-2">
+												<div class="controls">
+													<label class="control-label">Mô tả sản phẩm</label>
+													<textarea class="form-control" type="textarea" id="post-detail" name="detail" value="xxx" ></textarea>
+												</div>
+											</div>
+											
+											<div class="clear"> </div>
+										</div>
 											<div class="controls">
 												<label class="control-label">Hình ảnh</label>
 												<div class="container-fluid row col-sm-12">
@@ -402,9 +411,11 @@
 													</div>
 											</div>
 										</div>
-										<button class="submit mt-3">
-											<span>Cập nhật</span>
-										</button>
+										<br>
+										<div class="right-w3l" id = post-Button>
+											<button type="button" id = postButton class="btn btn-primary btn-lg btn-block" onclick="post()"> Cập nhật </button>
+											<!-- <input type="submit" id = registerButton class="form-control" value="Đăng ký"> -->
+										</div>
 									</div>
 								</div>
 							</form>
@@ -805,7 +816,40 @@
                 }
             })
         }
-        
+        function post() {
+            console.log("capnhat")
+            var forms = document.forms["post_form"]
+            if(forms.checkValidity()) {
+                var e = document.getElementById("product");
+				var strUser = e.options[e.selectedIndex].text;	
+				var Name = $("#post-name").val();
+				var Soluong  = $("#post-amount").val();
+				var Brand  = $("#post-brand").val();
+				var Price = $("#post-price").val();
+				var discountPri= $("#post-disprice").val();
+				var Detail= $("#post-detail").val();
+                $.ajax({
+                    url: '/post',
+                    type: 'POST',
+                    cache: false,
+                    data: { strUser, Name, Soluong, Brand, Price, discountPri, Detail},
+                    success: function (data) {
+                        console.log(data);
+                        if(data.profileState == true) {
+                            alert("Cập nhật thông tin thành công")
+                            location.reload();
+                        } else {
+                            alert("Cập nhật thông tin thành công")
+                        }
+                    }
+                    , error: function (jqXHR, textStatus, err) {
+						alert(Brand)
+						alert(strUser)
+                        alert('Lỗi ' + textStatus + ', lỗi ' + err)
+                    }
+                    })
+            } else alert("Vui lòng điền đầy đủ các trường")  
+		}
         function login() {
             console.log("vao ham login")
             var forms = document.forms["login-form"]
