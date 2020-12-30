@@ -118,6 +118,7 @@
 		</div>
 	</div>
 	<!-- //top-header -->
+
 	<!-- modals -->
 	<!-- log in -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -334,16 +335,14 @@
 						
 					</ul>
 					<div class="resp-tabs-container hor_1">
-
 						<div>
-							
-							<form action="#" method="post" class="creditly-card-form agileinfo_form" id="add_form">
+							<form action="#" method="post" class="creditly-card-form agileinfo_form">
 								<div class="creditly-wrapper wthree, w3_agileits_wrapper">
 									<div class="credit-card-wrapper">
 										<div class="first-row form-group">
 										</div>
 										
-											<div class="section_room_pay">
+											<div class="section_room_pay"> [<div class = "section_room_pay">] x
 												<label class="control-label">Danh mục sản phẩm</label>
 												<select class="year" id="product">
 													<option value="Dienthoai" >Điện thoại</option>
@@ -392,43 +391,37 @@
 												<label class="control-label">Hình ảnh</label>
 												<div class="container-fluid row col-sm-12">
 													<div class="col-sm-4">
-													<p><input type="file" accept="image/*" name="image" id="filea" onchange="loadFilea(event)" style="display: none;"></p>
-													<p><label for="filea" style="cursor: pointer;">Hình ảnh 1</label></p>
-													<p><img id="outputa" width="200" height="200"/></p>
+														<p><lable>Hình ảnh 1</label></p>
+														<input type="file" id="filea" name="" value="">
+														
+														<p><img id="outputa" width="200" height="200"/></p>
+														<div>
+															<textarea name="Base64a" id="Base64a" hidden="hidden"></textarea>
+														</div>
 													</div>
 													<div class="col-sm-4">
-													<p><input type="file" accept="image/*" name="image" id="fileb" onchange="loadFileb(event)" style="display: none;"></p>
-													<p><label for="fileb" style="cursor: pointer;">Hình ảnh 2</label></p>
-													<p><img id="outputb" width="200" height="200"/></p>
+														<p><lable>Hình ảnh 2</label></p>
+														<input type="file" id="fileb" name="" value="">
+														
+														<p><img id="outputb" width="200" height="200"/></p>
+														<div>
+															<textarea id="Base64b" hidden="hidden" ></textarea>
+														</div>
 													</div>
 													<div class="col-sm-4">
-													<p><input type="file" accept="image/*" name="image" id="filec" onchange="loadFilec(event)" style="display: none;"></p>
-													<p><label for="filec" style="cursor: pointer;">Hình ảnh 3</label></p>
-													<p><img id="outputc" width="200" height="200"/></p>
+														<p><lable>Hình ảnh 3</label></p>
+														<input type="file" id="filec" name="" value="">
+														
+														<p><img id="outputc" width="200" height="200"/></p>
+														<div >
+															<textarea id="Base64c" hidden="hidden"></textarea>
+														</div>
 													</div>
-													</div>
-
-												<script>
-												var loadFilea = function(event) {
-												var image = document.getElementById('outputa');
-												image.src = URL.createObjectURL(event.target.files[0]);
-												};
-												var loadFileb = function(event) {
-												var image = document.getElementById('outputb');
-												image.src = URL.createObjectURL(event.target.files[0]);
-												};
-												var loadFilec = function(event) {
-												var image = document.getElementById('outputc');
-												image.src = URL.createObjectURL(event.target.files[0]);
-												};
-												</script>
+				
+												</div>
 											</div>
 										</div>
-										<br>
-										<div class="right-w3l" id = add-Button>
-											<button type="button" id = addButton class="btn btn-primary btn-lg btn-block" onclick="add()"> Đăng tin </button>
-											<!-- <input type="submit" id = registerButton class="form-control" value="Đăng ký"> -->
-										</div>
+										<input type="submit" id="getData" class="btn btn-danger" value="Đăng tin" onclick="dangtin()">
 									</div>
 								</div>
 							</form>
@@ -771,146 +764,118 @@
 
 		});
 	</script>
-	<script type="text/javascript">
-        function emailERR(msg) {
-            var child = document.getElementById("err");
-            child.remove()
-
-            err = document.createElement("p");
-            err.setAttribute("id", "err")
-            var node = document.createTextNode(msg);
-            err.appendChild(node);
-            var element = document.getElementById("emailERR");
-            element.appendChild(err);
-        }
-        function checkEmail() {
-            var email = $("#reg-email").val();
-            console.log(email)
-            $.ajax({
-                url: '/checkEmail',
-                type: 'POST',
-                cache: false,
-                data: { email: email },
-                success: function (data) {
-                    if (data.duplicate) {
-                        console.log("ket qua:", data.duplicate)
-                        emailERR("Email đã tồn tại")
-                        document.getElementById("registerButton").disabled = true;
-                        document.getElementById("Button").style.backgroundColor = "red";
-                    }
-                    else {
-                        emailERR("Email hợp lệ");
-                        document.getElementById("registerButton").disabled = false;
-                    }
-                }
-                , error: function (jqXHR, textStatus, err) {
-                    alert('text status ' + textStatus + ', err ' + err)
-                }
-            })
-		}
-		function add() {
-            console.log("them sp")
-            var forms = document.forms["add_form"]
-            if(forms.checkValidity()) {
-                var e = document.getElementById("product");
-				var strUser = e.options[e.selectedIndex].text;	
-				var Name = $("#add-name").val();
-				var Soluong  = $("#add-amount").val();
-				var Brand  = $("#add-brand").val();
-				var Price = $("#add-price").val();
-				var discountPri= $("#add-disprice").val();
-				var Detail= $("#add-detail").val();
-                $.ajax({
-                    url: '/add',
-                    type: 'POST',
-                    cache: false,
-                    data: { strUser, Name, Soluong, Brand, Price, discountPri, Detail},
-                    success: function (data) {
-                        console.log(data);
-                        if(data.profileState == true) {
-                            alert("Cập nhật thông tin thành công")
-                            location.reload();
-                        } else {
-                            alert("Cập nhật thông tin thành công")
-                        }
-                    }
-                    , error: function (jqXHR, textStatus, err) {
-						alert(Brand)
-                        alert('Lỗi ' + textStatus + ', lỗi ' + err)
-                    }
-                    })
-            } else alert("Vui lòng điền đầy đủ các trường")  
-		}
-        
-        function login() {
-            console.log("vao ham login")
-            var forms = document.forms["login-form"]
-            if(forms.checkValidity()) {
-                var Email = $("#log-email").val();
-                var Password = $("#log-password").val();
-                $.ajax({
-                url: '/login',
-                type: 'POST',
-                cache: false,
-                data: { Email, Password },
-                success: function (data) {
-                    console.log(data);
-                    if(data.loginState == false) {
-                        console.log("dang nhap that bai")
-                        document.getElementById("login-state").innerHTML = "Email hoặc mật khẩu không đúng";
-                    } else {
-                        window.location.replace(data.url)
-                    }
-                }
-                , error: function (jqXHR, textStatus, err) {
-                    alert('text status ' + textStatus + ', err ' + err)
-                }
-                })
-            } else alert("Vui lòng điền đầy đủ các trường")  
-        }
-        function register() {
-            console.log("vao ham register")
-            var forms = document.forms["register-form"]
-            if(forms.checkValidity()) {
-                var Name = $("#reg-name").val();
-                var Email = $("#reg-email").val();
-                var Password = $("#reg-password").val();
-                var Password2 = $("#reg-password2").val();
-                if(Password != Password2) {
-                    document.getElementById("reg-password-check").innerHTML = "Mật khẩu không khớp";
-                } else if (Password.length <8) {
-                    document.getElementById("reg-password-check").innerHTML = "Mật khẩu dài tối thiểu 8 kí tự";
-                } else {
-                    $.ajax({
-                    url: '/register',
-                    type: 'POST',
-                    cache: false,
-                    data: { Email, Password, Name},
-                    success: function (data) {
-                        console.log(data);
-                        if(data.registerState == true) {
-                            alert("Đăng ký thành công")
-                            location.reload();
-                        } else {
-                            alert("Đăng ký không thành công")
-                        }
-                    }
-                    , error: function (jqXHR, textStatus, err) {
-                        alert('text status ' + textStatus + ', err ' + err)
-                    }
-                    })
-                }
-            } else alert("Vui lòng điền đầy đủ các trường")  
-        }
-                      
-    </script>
 	<!-- //smooth-scrolling-of-move-up -->
 
 	<!-- for bootstrap working -->
 	<script src="js/bootstrap.js"></script>
 	<!-- //for bootstrap working -->
 	<!-- //js-files -->
+	<!-- load anh -->
+	<script>
+		function encodeImageFileURL(){
+			fileSelect = document.getElementById("filea").files;
+			if(fileSelect.length > 0){
+				var fileSelect = fileSelect[0];
+				var fileReader = new FileReader();
 
+				fileReader.onload = function(FileLoadEvent){
+					var srcData =  FileLoadEvent.target.result;
+					document.getElementById("outputa").src = srcData;
+					document.getElementById("Base64a").innerHTML = srcData;
+				}
+				fileReader.readAsDataURL(fileSelect);
+			}
+		}
+		var fileUpa = document.getElementById("filea");
+		fileUpa.addEventListener("change", function(){
+			encodeImageFileURL()
+		})
+	</script>
+	<!-- load anh -->
+	<!-- load anh -->
+	<script>
+		function encodeImageFileURLb(){
+			fileSelect = document.getElementById("fileb").files;
+			if(fileSelect.length > 0){
+				var fileSelect = fileSelect[0];
+				var fileReader = new FileReader();
+
+				fileReader.onload = function(FileLoadEvent){
+					var srcData =  FileLoadEvent.target.result;
+					document.getElementById("outputb").src = srcData;
+					document.getElementById("Base64b").innerHTML = srcData;
+				}
+				fileReader.readAsDataURL(fileSelect);
+			}
+		}
+		var fileUpa = document.getElementById("fileb");
+		fileUpa.addEventListener("change", function(){
+			encodeImageFileURLb()
+		})
+	</script>
+	<!-- load anh -->
+	<!-- load anh -->
+	<script>
+		function encodeImageFileURLc(){
+			fileSelect = document.getElementById("filec").files;
+			if(fileSelect.length > 0){
+				var fileSelect = fileSelect[0];
+				var fileReader = new FileReader();
+
+				fileReader.onload = function(FileLoadEvent){
+					var srcData =  FileLoadEvent.target.result;
+					document.getElementById("outputc").src = srcData;
+					document.getElementById("Base64c").innerHTML = srcData;
+				}
+				fileReader.readAsDataURL(fileSelect);
+			}
+		}
+		var fileUpa = document.getElementById("filec");
+		fileUpa.addEventListener("change", function(){
+			encodeImageFileURLc()
+		})
+	</script>
+	<!-- load anh -->
+	<!-- ajax send data -->
+	<script type="text/javascript">
+		// CKEDITOR.replace( 'Base64a' );
+		// $(document).ready(function(){
+
+  //               $("#getData").click(function(){
+  //                   var editorData= CKEDITOR.instances['Base64a'].getData();
+  //                   alert(" your data is :"+editorData);
+  //               })
+
+  //          });
+	    function dangtin() {
+	    	var e = document.getElementById("product");
+			var category = e.options[e.selectedIndex].text;	
+			var Name = $("#add-name").val();
+			var Soluong  = $("#add-amount").val();
+			var Brand  = $("#add-brand").val();
+			var Price = $("#add-price").val();
+			var discountPri= $("#add-disprice").val();
+			var Detail= $("#add-detail").val();
+	      var image1 = document.getElementById("Base64a").value;
+	      var image2 = document.getElementById("Base64b").value;
+	      var image3 = document.getElementById("Base64c").value;
+	      
+	      $.ajax({
+	        url: '/',
+	        type: 'POST',
+	        cache: false,
+	        data: {category,Name,Soluong,Brand,Price,discountPri,Detail,image1,image2,image3},
+	        success: function (data) {
+	            window.location.href = "/checkout"
+	        }
+	        , error: function (jqXHR, textStatus, err) {
+	            alert('text status ' + textStatus + ', err ' + err)
+	        }
+	        })
+	      }
+                  
+	</script>
+	<!-- ajax send data-->
 </body>
 
 </html>
