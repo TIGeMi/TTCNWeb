@@ -362,6 +362,11 @@
 												<label class="control-label">Số lượng</label>
 												<input class="billing-address-name form-control" type="text" id="add-amount" name="name" >
 											</div>
+											<br>
+											<div class="controls">
+												<label class="control-label">Tên thương hiệu</label>
+												<input class="billing-address-name form-control" type="text" id="add-brand" name="name" >
+											</div>
 											<div class="w3_agileits_card_number_grids my-3">
 												<div class="w3_agileits_card_number_grid_left">
 													<div class="controls">
@@ -811,6 +816,7 @@
 				var strUser = e.options[e.selectedIndex].text;	
 				var Name = $("#add-name").val();
 				var Soluong  = $("#add-amount").val();
+				var Brand  = $("#add-brand").val();
 				var Price = $("#add-price").val();
 				var discountPri= $("#add-disprice").val();
 				var Detail= $("#add-detail").val();
@@ -818,7 +824,7 @@
                     url: '/add',
                     type: 'POST',
                     cache: false,
-                    data: { strUser, Name, Soluong, Price, discountPri, Detail},
+                    data: { strUser, Name, Soluong, Brand, Price, discountPri, Detail},
                     success: function (data) {
                         console.log(data);
                         if(data.profileState == true) {
@@ -829,7 +835,7 @@
                         }
                     }
                     , error: function (jqXHR, textStatus, err) {
-						alert(strUser)
+						alert(Brand)
                         alert('Lỗi ' + textStatus + ', lỗi ' + err)
                     }
                     })
